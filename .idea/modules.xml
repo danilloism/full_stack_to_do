@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/backend/melos_backend.iml" filepath="$PROJECT_DIR$/app/backend/melos_backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/data_source/melos_data_source.iml" filepath="$PROJECT_DIR$/packages/data_source/melos_data_source.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/database/melos_database.iml" filepath="$PROJECT_DIR$/packages/database/melos_database.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/exceptions/melos_exceptions.iml" filepath="$PROJECT_DIR$/packages/exceptions/melos_exceptions.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/failures/melos_failures.iml" filepath="$PROJECT_DIR$/packages/failures/melos_failures.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/models/melos_models.iml" filepath="$PROJECT_DIR$/packages/models/melos_models.iml" />

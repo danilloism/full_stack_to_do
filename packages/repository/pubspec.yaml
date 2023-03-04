@@ -15,6 +15,8 @@ dependencies:
   data_source:
     path: ../data_source
   either_dart: ^0.3.0
+  exceptions:
+    path: ../exceptions
   failures:
     path: ../failures
   models:

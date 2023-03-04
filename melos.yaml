@@ -9,6 +9,8 @@ scripts:
     description: Starts the dev server for the backend
     select-package:
       flutter: false
+      depends-on: dart_frog
+
   gen:select:
     run: melos exec -- dart run build_runner build --delete-conflicting-outputs
     description: Runs build_runner on all packages that depends on it
