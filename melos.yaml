@@ -1,0 +1,18 @@
+name: full_stack_todo
+packages:
+  - app/*
+  - packages/*
+
+scripts:
+  server:dev:
+    run: melos exec -c 1 --fail-fast -- "dart_frog dev"
+    description: Starts the dev server for the backend
+    select-package:
+      flutter: false
+  gen:select:
+    run: melos exec -- dart run build_runner build --delete-conflicting-outputs
+    description: Runs build_runner on all packages that depends on it
+    select-package:
+      depends-on: build_runner
+  gen:
+    run: melos run gen:select --no-select
