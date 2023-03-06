@@ -1,4 +1,4 @@
-name: backend
+name: server
 description: An new Dart Frog application
 version: 1.0.0+1
 publish_to: none
@@ -9,22 +9,22 @@ environment:
 dependencies:
   dart_frog: ^0.3.0
   data_source:
-    path: ../../packages/data_source
+    path: packages/data_source
   database:
-    path: ../../packages/database
+    path: packages/database
   dotenv: ^4.1.0
   either_dart: ^0.3.0
   exceptions:
-    path: ../../packages/exceptions
+    path: packages/exceptions
   failures:
-    path: ../../packages/failures
+    path: packages/failures
   http: ^0.13.5
   models:
-    path: ../../packages/models
+    path: packages/models
   repository:
-    path: ../../packages/repository
+    path: packages/repository
   typedefs:
-    path: ../../packages/typedefs
+    path: packages/typedefs
 
 dev_dependencies:
   mocktail: ^0.3.0

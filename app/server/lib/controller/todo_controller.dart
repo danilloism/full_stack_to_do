@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:backend/controller/http_controller.dart';
+import 'package:server/controller/http_controller.dart';
 import 'package:dart_frog/dart_frog.dart';
 import 'package:models/models.dart';
 import 'package:repository/repository.dart';
@@ -44,7 +44,7 @@ class TodoController extends HttpController {
 
     return res.fold(
       mapFailureToResponse,
-      (success) => Response.json(body: success.map((e) => e.toJson())),
+      (success) => Response.json(body: success.map((e) => e.toJson()).toList()),
     );
   }
 

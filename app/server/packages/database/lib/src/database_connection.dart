@@ -30,28 +30,20 @@ class DatabaseConnection {
 
   Future<void> open() async {
     try {
-      if (!_dbIsDefined || _db!.isClosed) {
-        _db = PostgreSQLConnection(
-          _host,
-          _port,
-          _dbName,
-          username: _username,
-          password: _password,
-        );
+      _db = PostgreSQLConnection(
+        _host,
+        _port,
+        _dbName,
+        username: _username,
+        password: _password,
+      );
 
-        await _db!.open();
-        log('Database connected successfully');
-
-        return;
-      }
-
-      throw Exception('connection is already open');
+      await _db!.open();
+      log('Database connected successfully');
     } catch (e) {
       log('Database failed to connect: $e');
     }
   }
 
-  Future<void> close() => _dbIsDefined
-      ? db.close()
-      : throw Exception('Database connection not initialized');
+  Future<void> close() => _db!.close();
 }

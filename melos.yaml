@@ -1,11 +1,11 @@
 name: full_stack_todo
 packages:
   - app/*
-  - packages/*
+  - app/server/packages/*
 
 scripts:
   server:dev:
-    run: melos exec -c 1 --fail-fast -- "dart_frog dev"
+    run: melos exec --fail-fast -- "dart_frog dev"
     description: Starts the dev server for the backend
     select-package:
       flutter: false
