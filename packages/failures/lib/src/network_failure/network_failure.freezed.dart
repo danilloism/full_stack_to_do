@@ -35,12 +35,18 @@ NetworkFailure _$NetworkFailureFromJson(Map<String, dynamic> json) {
 mixin _$NetworkFailure {
   String get message => throw _privateConstructorUsedError;
   int get statusCode => throw _privateConstructorUsedError;
+  Map<String, List<String>> get errors => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String message, int statusCode, List<String> errors)
+    TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)
         $default, {
-    required TResult Function(String message, int statusCode) request,
-    required TResult Function(String message, int statusCode) server,
+    required TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)
+        request,
+    required TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)
+        server,
     required TResult Function(
             String message, int statusCode, Map<String, List<String>> errors)
         validation,
@@ -48,10 +54,15 @@ mixin _$NetworkFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String message, int statusCode, List<String> errors)?
+    TResult? Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
         $default, {
-    TResult? Function(String message, int statusCode)? request,
-    TResult? Function(String message, int statusCode)? server,
+    TResult? Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
+        request,
+    TResult? Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
+        server,
     TResult? Function(
             String message, int statusCode, Map<String, List<String>> errors)?
         validation,
@@ -59,10 +70,15 @@ mixin _$NetworkFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String message, int statusCode, List<String> errors)?
+    TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
         $default, {
-    TResult Function(String message, int statusCode)? request,
-    TResult Function(String message, int statusCode)? server,
+    TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
+        request,
+    TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
+        server,
     TResult Function(
             String message, int statusCode, Map<String, List<String>> errors)?
         validation,
@@ -106,7 +122,7 @@ abstract class $NetworkFailureCopyWith<$Res> {
           NetworkFailure value, $Res Function(NetworkFailure) then) =
       _$NetworkFailureCopyWithImpl<$Res, NetworkFailure>;
   @useResult
-  $Res call({String message, int statusCode});
+  $Res call({String message, int statusCode, Map<String, List<String>> errors});
 }
 
 /// @nodoc
@@ -124,6 +140,7 @@ class _$NetworkFailureCopyWithImpl<$Res, $Val extends NetworkFailure>
   $Res call({
     Object? message = null,
     Object? statusCode = null,
+    Object? errors = null,
   }) {
     return _then(_value.copyWith(
       message: null == message
@@ -134,6 +151,10 @@ class _$NetworkFailureCopyWithImpl<$Res, $Val extends NetworkFailure>
           ? _value.statusCode
           : statusCode // ignore: cast_nullable_to_non_nullable
               as int,
+      errors: null == errors
+          ? _value.errors
+          : errors // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<String>>,
     ) as $Val);
   }
 }
@@ -146,7 +167,7 @@ abstract class _$$_NetworkFailureCopyWith<$Res>
       __$$_NetworkFailureCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String message, int statusCode, List<String> errors});
+  $Res call({String message, int statusCode, Map<String, List<String>> errors});
 }
 
 /// @nodoc
@@ -176,7 +197,7 @@ class __$$_NetworkFailureCopyWithImpl<$Res>
       errors: null == errors
           ? _value._errors
           : errors // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as Map<String, List<String>>,
     ));
   }
 }
@@ -187,7 +208,7 @@ class _$_NetworkFailure implements _NetworkFailure {
   const _$_NetworkFailure(
       {required this.message,
       required this.statusCode,
-      final List<String> errors = const [],
+      final Map<String, List<String>> errors = const {},
       final String? $type})
       : _errors = errors,
         $type = $type ?? 'default';
@@ -199,13 +220,13 @@ class _$_NetworkFailure implements _NetworkFailure {
   final String message;
   @override
   final int statusCode;
-  final List<String> _errors;
+  final Map<String, List<String>> _errors;
   @override
   @JsonKey()
-  List<String> get errors {
-    if (_errors is EqualUnmodifiableListView) return _errors;
+  Map<String, List<String>> get errors {
+    if (_errors is EqualUnmodifiableMapView) return _errors;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_errors);
+    return EqualUnmodifiableMapView(_errors);
   }
 
   @JsonKey(name: 'type')
@@ -241,10 +262,15 @@ class _$_NetworkFailure implements _NetworkFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String message, int statusCode, List<String> errors)
+    TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)
         $default, {
-    required TResult Function(String message, int statusCode) request,
-    required TResult Function(String message, int statusCode) server,
+    required TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)
+        request,
+    required TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)
+        server,
     required TResult Function(
             String message, int statusCode, Map<String, List<String>> errors)
         validation,
@@ -255,10 +281,15 @@ class _$_NetworkFailure implements _NetworkFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String message, int statusCode, List<String> errors)?
+    TResult? Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
         $default, {
-    TResult? Function(String message, int statusCode)? request,
-    TResult? Function(String message, int statusCode)? server,
+    TResult? Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
+        request,
+    TResult? Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
+        server,
     TResult? Function(
             String message, int statusCode, Map<String, List<String>> errors)?
         validation,
@@ -269,10 +300,15 @@ class _$_NetworkFailure implements _NetworkFailure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String message, int statusCode, List<String> errors)?
+    TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
         $default, {
-    TResult Function(String message, int statusCode)? request,
-    TResult Function(String message, int statusCode)? server,
+    TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
+        request,
+    TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
+        server,
     TResult Function(
             String message, int statusCode, Map<String, List<String>> errors)?
         validation,
@@ -333,7 +369,7 @@ abstract class _NetworkFailure implements NetworkFailure {
   const factory _NetworkFailure(
       {required final String message,
       required final int statusCode,
-      final List<String> errors}) = _$_NetworkFailure;
+      final Map<String, List<String>> errors}) = _$_NetworkFailure;
 
   factory _NetworkFailure.fromJson(Map<String, dynamic> json) =
       _$_NetworkFailure.fromJson;
@@ -342,7 +378,8 @@ abstract class _NetworkFailure implements NetworkFailure {
   String get message;
   @override
   int get statusCode;
-  List<String> get errors;
+  @override
+  Map<String, List<String>> get errors;
   @override
   @JsonKey(ignore: true)
   _$$_NetworkFailureCopyWith<_$_NetworkFailure> get copyWith =>
@@ -357,7 +394,7 @@ abstract class _$$RequestFailureCopyWith<$Res>
       __$$RequestFailureCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String message, int statusCode});
+  $Res call({String message, int statusCode, Map<String, List<String>> errors});
 }
 
 /// @nodoc
@@ -373,6 +410,7 @@ class __$$RequestFailureCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
     Object? statusCode = null,
+    Object? errors = null,
   }) {
     return _then(_$RequestFailure(
       message: null == message
@@ -383,6 +421,10 @@ class __$$RequestFailureCopyWithImpl<$Res>
           ? _value.statusCode
           : statusCode // ignore: cast_nullable_to_non_nullable
               as int,
+      errors: null == errors
+          ? _value._errors
+          : errors // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<String>>,
     ));
   }
 }
@@ -393,8 +435,10 @@ class _$RequestFailure implements RequestFailure {
   const _$RequestFailure(
       {required this.message,
       this.statusCode = HttpStatus.badRequest,
+      final Map<String, List<String>> errors = const {},
       final String? $type})
-      : $type = $type ?? 'request';
+      : _errors = errors,
+        $type = $type ?? 'request';
 
   factory _$RequestFailure.fromJson(Map<String, dynamic> json) =>
       _$$RequestFailureFromJson(json);
@@ -404,13 +448,21 @@ class _$RequestFailure implements RequestFailure {
   @override
   @JsonKey()
   final int statusCode;
+  final Map<String, List<String>> _errors;
+  @override
+  @JsonKey()
+  Map<String, List<String>> get errors {
+    if (_errors is EqualUnmodifiableMapView) return _errors;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_errors);
+  }
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'NetworkFailure.request(message: $message, statusCode: $statusCode)';
+    return 'NetworkFailure.request(message: $message, statusCode: $statusCode, errors: $errors)';
   }
 
   @override
@@ -420,12 +472,14 @@ class _$RequestFailure implements RequestFailure {
             other is _$RequestFailure &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.statusCode, statusCode) ||
-                other.statusCode == statusCode));
+                other.statusCode == statusCode) &&
+            const DeepCollectionEquality().equals(other._errors, _errors));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, message, statusCode);
+  int get hashCode => Object.hash(runtimeType, message, statusCode,
+      const DeepCollectionEquality().hash(_errors));
 
   @JsonKey(ignore: true)
   @override
@@ -436,45 +490,60 @@ class _$RequestFailure implements RequestFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String message, int statusCode, List<String> errors)
+    TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)
         $default, {
-    required TResult Function(String message, int statusCode) request,
-    required TResult Function(String message, int statusCode) server,
+    required TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)
+        request,
+    required TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)
+        server,
     required TResult Function(
             String message, int statusCode, Map<String, List<String>> errors)
         validation,
   }) {
-    return request(message, statusCode);
+    return request(message, statusCode, errors);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String message, int statusCode, List<String> errors)?
+    TResult? Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
         $default, {
-    TResult? Function(String message, int statusCode)? request,
-    TResult? Function(String message, int statusCode)? server,
+    TResult? Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
+        request,
+    TResult? Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
+        server,
     TResult? Function(
             String message, int statusCode, Map<String, List<String>> errors)?
         validation,
   }) {
-    return request?.call(message, statusCode);
+    return request?.call(message, statusCode, errors);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String message, int statusCode, List<String> errors)?
+    TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
         $default, {
-    TResult Function(String message, int statusCode)? request,
-    TResult Function(String message, int statusCode)? server,
+    TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
+        request,
+    TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
+        server,
     TResult Function(
             String message, int statusCode, Map<String, List<String>> errors)?
         validation,
     required TResult orElse(),
   }) {
     if (request != null) {
-      return request(message, statusCode);
+      return request(message, statusCode, errors);
     }
     return orElse();
   }
@@ -526,7 +595,9 @@ class _$RequestFailure implements RequestFailure {
 
 abstract class RequestFailure implements NetworkFailure {
   const factory RequestFailure(
-      {required final String message, final int statusCode}) = _$RequestFailure;
+      {required final String message,
+      final int statusCode,
+      final Map<String, List<String>> errors}) = _$RequestFailure;
 
   factory RequestFailure.fromJson(Map<String, dynamic> json) =
       _$RequestFailure.fromJson;
@@ -535,6 +606,8 @@ abstract class RequestFailure implements NetworkFailure {
   String get message;
   @override
   int get statusCode;
+  @override
+  Map<String, List<String>> get errors;
   @override
   @JsonKey(ignore: true)
   _$$RequestFailureCopyWith<_$RequestFailure> get copyWith =>
@@ -549,7 +622,7 @@ abstract class _$$ServerFailureCopyWith<$Res>
       __$$ServerFailureCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String message, int statusCode});
+  $Res call({String message, int statusCode, Map<String, List<String>> errors});
 }
 
 /// @nodoc
@@ -565,6 +638,7 @@ class __$$ServerFailureCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
     Object? statusCode = null,
+    Object? errors = null,
   }) {
     return _then(_$ServerFailure(
       message: null == message
@@ -575,6 +649,10 @@ class __$$ServerFailureCopyWithImpl<$Res>
           ? _value.statusCode
           : statusCode // ignore: cast_nullable_to_non_nullable
               as int,
+      errors: null == errors
+          ? _value._errors
+          : errors // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<String>>,
     ));
   }
 }
@@ -585,8 +663,10 @@ class _$ServerFailure implements ServerFailure {
   const _$ServerFailure(
       {required this.message,
       this.statusCode = HttpStatus.internalServerError,
+      final Map<String, List<String>> errors = const {},
       final String? $type})
-      : $type = $type ?? 'server';
+      : _errors = errors,
+        $type = $type ?? 'server';
 
   factory _$ServerFailure.fromJson(Map<String, dynamic> json) =>
       _$$ServerFailureFromJson(json);
@@ -596,13 +676,21 @@ class _$ServerFailure implements ServerFailure {
   @override
   @JsonKey()
   final int statusCode;
+  final Map<String, List<String>> _errors;
+  @override
+  @JsonKey()
+  Map<String, List<String>> get errors {
+    if (_errors is EqualUnmodifiableMapView) return _errors;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_errors);
+  }
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'NetworkFailure.server(message: $message, statusCode: $statusCode)';
+    return 'NetworkFailure.server(message: $message, statusCode: $statusCode, errors: $errors)';
   }
 
   @override
@@ -612,12 +700,14 @@ class _$ServerFailure implements ServerFailure {
             other is _$ServerFailure &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.statusCode, statusCode) ||
-                other.statusCode == statusCode));
+                other.statusCode == statusCode) &&
+            const DeepCollectionEquality().equals(other._errors, _errors));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, message, statusCode);
+  int get hashCode => Object.hash(runtimeType, message, statusCode,
+      const DeepCollectionEquality().hash(_errors));
 
   @JsonKey(ignore: true)
   @override
@@ -628,45 +718,60 @@ class _$ServerFailure implements ServerFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String message, int statusCode, List<String> errors)
+    TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)
         $default, {
-    required TResult Function(String message, int statusCode) request,
-    required TResult Function(String message, int statusCode) server,
+    required TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)
+        request,
+    required TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)
+        server,
     required TResult Function(
             String message, int statusCode, Map<String, List<String>> errors)
         validation,
   }) {
-    return server(message, statusCode);
+    return server(message, statusCode, errors);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String message, int statusCode, List<String> errors)?
+    TResult? Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
         $default, {
-    TResult? Function(String message, int statusCode)? request,
-    TResult? Function(String message, int statusCode)? server,
+    TResult? Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
+        request,
+    TResult? Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
+        server,
     TResult? Function(
             String message, int statusCode, Map<String, List<String>> errors)?
         validation,
   }) {
-    return server?.call(message, statusCode);
+    return server?.call(message, statusCode, errors);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String message, int statusCode, List<String> errors)?
+    TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
         $default, {
-    TResult Function(String message, int statusCode)? request,
-    TResult Function(String message, int statusCode)? server,
+    TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
+        request,
+    TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
+        server,
     TResult Function(
             String message, int statusCode, Map<String, List<String>> errors)?
         validation,
     required TResult orElse(),
   }) {
     if (server != null) {
-      return server(message, statusCode);
+      return server(message, statusCode, errors);
     }
     return orElse();
   }
@@ -718,7 +823,9 @@ class _$ServerFailure implements ServerFailure {
 
 abstract class ServerFailure implements NetworkFailure {
   const factory ServerFailure(
-      {required final String message, final int statusCode}) = _$ServerFailure;
+      {required final String message,
+      final int statusCode,
+      final Map<String, List<String>> errors}) = _$ServerFailure;
 
   factory ServerFailure.fromJson(Map<String, dynamic> json) =
       _$ServerFailure.fromJson;
@@ -727,6 +834,8 @@ abstract class ServerFailure implements NetworkFailure {
   String get message;
   @override
   int get statusCode;
+  @override
+  Map<String, List<String>> get errors;
   @override
   @JsonKey(ignore: true)
   _$$ServerFailureCopyWith<_$ServerFailure> get copyWith =>
@@ -837,10 +946,15 @@ class _$ValidationFailure implements ValidationFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String message, int statusCode, List<String> errors)
+    TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)
         $default, {
-    required TResult Function(String message, int statusCode) request,
-    required TResult Function(String message, int statusCode) server,
+    required TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)
+        request,
+    required TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)
+        server,
     required TResult Function(
             String message, int statusCode, Map<String, List<String>> errors)
         validation,
@@ -851,10 +965,15 @@ class _$ValidationFailure implements ValidationFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String message, int statusCode, List<String> errors)?
+    TResult? Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
         $default, {
-    TResult? Function(String message, int statusCode)? request,
-    TResult? Function(String message, int statusCode)? server,
+    TResult? Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
+        request,
+    TResult? Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
+        server,
     TResult? Function(
             String message, int statusCode, Map<String, List<String>> errors)?
         validation,
@@ -865,10 +984,15 @@ class _$ValidationFailure implements ValidationFailure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String message, int statusCode, List<String> errors)?
+    TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
         $default, {
-    TResult Function(String message, int statusCode)? request,
-    TResult Function(String message, int statusCode)? server,
+    TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
+        request,
+    TResult Function(
+            String message, int statusCode, Map<String, List<String>> errors)?
+        server,
     TResult Function(
             String message, int statusCode, Map<String, List<String>> errors)?
         validation,
@@ -938,6 +1062,7 @@ abstract class ValidationFailure implements NetworkFailure {
   String get message;
   @override
   int get statusCode;
+  @override
   Map<String, List<String>> get errors;
   @override
   @JsonKey(ignore: true)

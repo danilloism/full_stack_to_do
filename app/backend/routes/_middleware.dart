@@ -1,3 +1,4 @@
+import 'package:backend/controller/todo_controller.dart';
 import 'package:backend/core/environment.dart';
 import 'package:dart_frog/dart_frog.dart';
 import 'package:data_source/data_source.dart';
@@ -6,7 +7,7 @@ import 'package:dotenv/dotenv.dart';
 import 'package:repository/repository.dart';
 
 final _env = Environment(DotEnv());
-final db = DatabaseConnection(
+final _db = DatabaseConnection(
   dbName: _env.dbName,
   host: _env.dbHost,
   password: _env.dbPassword,
@@ -14,15 +15,15 @@ final db = DatabaseConnection(
   username: _env.dbUsername,
 );
 
-Handler middleware(Handler handler) {
-  late final TodoDataSource dataSource;
-  if (_env.env.isDevelopment) {
-    dataSource = InMemoryDataSource();
-  } else {
-    dataSource = DbDataSource(db);
-  }
+final TodoDataSource _dataSource =
+    _env.env.isDevelopment ? InMemoryDataSource() : DbDataSource(_db);
 
+Handler middleware(Handler handler) {
   return handler
-    ..use(provider<TodoRepository>((_) => TodoRepositoryImpl(dataSource)))
-    ..use(requestLogger());
+    ..use(requestLogger())
+    ..use(
+      provider<TodoController>(
+        (_) => TodoController(TodoRepositoryImpl(_dataSource)),
+      ),
+    );
 }

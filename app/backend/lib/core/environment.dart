@@ -1,23 +1,28 @@
 import 'package:dotenv/dotenv.dart';
 
 class Environment {
-  Environment(this._env) {
-    _env.load();
+  Environment(this._dotEnv) {
+    _dotEnv.load();
   }
 
-  final DotEnv _env;
+  final DotEnv _dotEnv;
 
-  String get dbHost => _env['DB_HOST'] ?? 'localhost';
-  int get dbPort => int.tryParse(_env['DB_PORT'] ?? '') ?? 5432;
-  String get dbName => _env['DB_DATABASE'] ?? 'dev_todo';
-  String get dbUsername => _env['DB_USERNAME'] ?? 'dev';
-  String get dbPassword => _env['DB_PASSWORD'] ?? 'dev';
+  String get dbHost => _dotEnv['DB_HOST'] ?? 'notDefined';
+  int get dbPort => int.tryParse(_dotEnv['DB_PORT'] ?? '') ?? 0;
+  String get dbName => _dotEnv['DB_DATABASE'] ?? 'notDefined';
+  String get dbUsername => _dotEnv['DB_USERNAME'] ?? 'notDefined';
+  String get dbPassword => _dotEnv['DB_PASSWORD'] ?? 'notDefined';
   Env get env {
-    final value = _env['ENV'] ?? 'dev';
+    final value = _dotEnv['ENV']?.toLowerCase();
 
-    final result = Env.values.singleWhere(
-        (element) => value.toLowerCase().contains(element.name.toLowerCase()));
-    return result;
+    switch (value) {
+      case 'prod':
+      case 'production':
+      case 'release':
+        return Env.prod;
+      default:
+        return Env.dev;
+    }
   }
 }
 

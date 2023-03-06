@@ -7,7 +7,7 @@ import 'package:failures/failures.dart';
 /// Primary key type for a Todo.
 typedef TodoId = int;
 
-typedef ValidationErrors = Map<String, List<String>>;
+typedef NetworkErrors = Map<String, List<String>>;
 
 Either<Failure, TodoId> mapTodoId(String id) {
   try {
