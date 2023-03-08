@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:dart_frog/dart_frog.dart';
 import 'package:either_dart/either.dart';
@@ -48,10 +49,13 @@ abstract class HttpController {
   }
 
   Response mapFailureToResponse(Failure failure) => Response.json(
-        body: {
-          'message': failure.message,
-          'errors': failure.errors,
-        },
+        body: failure.toJson(),
         statusCode: failure.statusCode,
       );
+
+  Response notAllowed() {
+    const notAllowedFailure = NotAllowedFailure();
+
+    return mapFailureToResponse(notAllowedFailure);
+  }
 }

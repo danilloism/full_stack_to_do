@@ -38,16 +38,15 @@ class TodoRepositoryImpl implements TodoRepository {
   @override
   Future<Either<Failure, void>> deleteById(TodoId id) async {
     try {
-      final exists = await getById(id);
-
-      if (exists.isLeft) return exists;
-
       final deleted = await dataSource.deleteById(id);
 
       return Right(deleted);
     } on ServerException catch (e) {
       log(e.message);
       return Left(ServerFailure(message: e.message));
+    } on NotFoundException catch (e) {
+      log(e.message);
+      return Left(ServerFailure(message: e.message, statusCode: e.statusCode));
     }
   }
 

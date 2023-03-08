@@ -1,13 +1,10 @@
-// ignore_for_file: flutter_style_todos
-
 import 'package:either_dart/either.dart';
 import 'package:exceptions/exceptions.dart';
 import 'package:failures/failures.dart';
 
-/// Primary key type for a Todo.
 typedef TodoId = int;
 
-typedef NetworkErrors = Map<String, List<String>>;
+typedef ValidationErrors = Map<String, List<String>>;
 
 Either<Failure, TodoId> mapTodoId(String id) {
   try {

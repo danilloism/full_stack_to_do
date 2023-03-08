@@ -20,7 +20,8 @@ class UpdateTodoDto with _$UpdateTodoDto {
   static Either<ValidationFailure, UpdateTodoDto> validated(
     Map<String, dynamic> json,
   ) {
-    final NetworkErrors errors = {};
+    // ignore: omit_local_variable_types
+    final ValidationErrors errors = {};
 
     final title = json['title'] as String?;
     if (title == null || title.isEmpty) {

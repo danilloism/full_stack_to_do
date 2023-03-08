@@ -3,14 +3,14 @@ part of 'todo_data_source.dart';
 class DbDataSource implements TodoDataSource {
   const DbDataSource(this._dbConn);
 
-  final DatabaseConnection _dbConn;
+  final PgConnection _dbConn;
 
   @override
   Future<Todo> create(CreateTodoDto todo) async {
     try {
       await _dbConn.open();
 
-      final result = await _dbConn.db.query(
+      final result = await _dbConn.query(
         '''
         INSERT INTO todos(title, description, completed, created_at)
         VALUES (@title, @description, @completed, @created_at) RETURNING *
@@ -39,13 +39,18 @@ class DbDataSource implements TodoDataSource {
   Future<void> deleteById(TodoId id) async {
     try {
       await _dbConn.open();
-      await _dbConn.db.query(
+
+      final result = await _dbConn.query(
         '''
         DELETE FROM todos
         WHERE id = @id
         ''',
         substitutionValues: {'id': id},
       );
+
+      if (result.affectedRowCount == 0) {
+        throw const NotFoundException('Todo not found');
+      }
     } on PostgreSQLException catch (e) {
       throw ServerException(e.message ?? 'Unexpected error');
     } finally {
@@ -58,7 +63,7 @@ class DbDataSource implements TodoDataSource {
     try {
       await _dbConn.open();
 
-      final result = await _dbConn.db.query('SELECT * FROM todos');
+      final result = await _dbConn.query('SELECT * FROM todos');
 
       final data =
           result.map((e) => e.toColumnMap()).map(Todo.fromJson).toList();
@@ -76,7 +81,7 @@ class DbDataSource implements TodoDataSource {
     try {
       await _dbConn.open();
 
-      final result = await _dbConn.db.query(
+      final result = await _dbConn.query(
         'SELECT * FROM todos WHERE id = @id',
         substitutionValues: {'id': id},
       );
@@ -98,9 +103,9 @@ class DbDataSource implements TodoDataSource {
     try {
       await _dbConn.open();
 
-      final result = await _dbConn.db.query(
+      final result = await _dbConn.query(
         '''
-        UPDATRE todos
+        UPDATE todos
         SET title = COALESCE(@new_title, title),
             description = COALESCE(@new_description, description),
             completed = COALESCE(@new_completed, completed),

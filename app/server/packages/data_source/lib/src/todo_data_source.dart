@@ -7,7 +7,6 @@ import 'package:postgres/postgres.dart';
 import 'package:typedefs/typedefs.dart';
 
 part 'todo_data_source_db.dart';
-part 'todo_data_source_memory.dart';
 
 abstract class TodoDataSource {
   Future<List<Todo>> getAll();

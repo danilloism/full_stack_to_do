@@ -19,7 +19,7 @@ class CreateTodoDto with _$CreateTodoDto {
   static Either<ValidationFailure, CreateTodoDto> validated(
     Map<String, dynamic> json,
   ) {
-    final NetworkErrors errors = {};
+    final ValidationErrors errors = {};
 
     final title = json['title'] as String?;
     if (title == null || title.isEmpty) {

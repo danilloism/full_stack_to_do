@@ -1,7 +1,5 @@
-import 'dart:io';
-
-import 'package:server/controller/todo_controller.dart';
 import 'package:dart_frog/dart_frog.dart';
+import 'package:server/controller/todo_controller.dart';
 
 Future<Response> onRequest(RequestContext context, String id) async {
   final controller = context.read<TodoController>();
@@ -18,9 +16,6 @@ Future<Response> onRequest(RequestContext context, String id) async {
     case HttpMethod.options:
     case HttpMethod.patch:
     case HttpMethod.post:
-      return Response.json(
-        body: {'message': '👀 Looks like you are lost 🔦'},
-        statusCode: HttpStatus.methodNotAllowed,
-      );
+      return controller.notAllowed();
   }
 }
