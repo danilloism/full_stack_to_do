@@ -3,9 +3,6 @@
 import 'dart:collection';
 
 import 'package:typedefs/typedefs.dart';
-import 'package:validator/src/validation_rules.dart';
-
-export './validation_rules.dart';
 
 /// {@template validator}
 /// A Very Good Project created by Very Good CLI.
@@ -22,78 +19,145 @@ class MapValidator implements Validator {
   final Map<String, dynamic> _map;
   final ValidationErrors _errors = {};
 
-  MapValidator addNameValidation([
-    ValidationRules rules = const ValidationRules(),
-  ]) {
-    final name = _map['name'] as String? ?? '';
-    _errors['name'] ??= [];
+  void addNameValidation() {
+    return addCustomValidaton<String>(
+      key: 'name',
+      validation: (value) {
+        final name = value ?? '';
 
-    if (name.isEmpty) {
-      _errors['name']!.add('Name is required');
-    }
+        if (name.isEmpty) {
+          return 'Name is required';
+        }
 
-    return this;
+        return null;
+      },
+    );
   }
 
-  MapValidator addEmailValidation([
-    ValidationRules rules = const ValidationRules(),
-  ]) {
-    final email = _map['email'] as String? ?? '';
-    _errors['email'] ??= [];
-
-    if (email.isEmpty) {
-      _errors['email']!.add('Email is required');
-    }
-
-    if (!email.contains('@')) {
-      errors['email']!.add('Email is invalid');
-    }
-
-    return this;
+  void addRequiredStringValidation(String key) {
+    return addCustomValidaton<String>(
+      key: key,
+      validation: (value) =>
+          value == null || value.isEmpty ? '$key is required' : null,
+    );
   }
 
-  MapValidator addPasswordValidation([
-    ValidationRules rules = const ValidationRules(minLength: 6),
-  ]) {
-    final password = _map['password'] as String? ?? '';
-    _errors['password'] ??= [];
+  void addNullableAndNotEmptyValidation(String key) {
+    return addCustomValidaton<dynamic>(
+      key: key,
+      validation: (value) {
+        if (value != null) {
+          if ((value is String && value.isEmpty) ||
+              (value is Iterable && value.isEmpty)) {
+            // ignore: avoid_escaping_inner_quotes
+            return '$key must not have an empty value if it\'s not null';
+          }
+        }
 
-    if (password.isEmpty) {
-      _errors['password']!.add('Password is required');
-    }
-
-    final minLength = rules.minLength;
-    if (minLength != null && password.length < minLength) {
-      _errors['password']!
-          .add('Password must have at least $minLength characters');
-    }
-
-    final maxLength = rules.maxLenght;
-
-    if (maxLength != null && password.length > maxLength) {
-      _errors['password']!
-          .add('Password must have a maximium of $maxLength characters');
-    }
-
-    return this;
+        return null;
+      },
+    );
   }
 
-  MapValidator addCustomValidator<T extends Object?>({
-    required String fieldName,
-    required String? Function(T? value) validation,
+  void addMinNumberOfFieldsRequiredValidaton({
+    required Set<String> fields,
+    required int min,
   }) {
-    final error = validation(_map[fieldName] as T);
-    _errors[fieldName] ??= [];
+    assert(
+      fields.length > min,
+      'fieldNames lenght must be greater than min',
+    );
+
+    var withValue = 0;
+
+    for (final field in fields) {
+      addCustomValidaton<dynamic>(
+        key: field,
+        validation: (value) {
+          if (value != null) {
+            if (value is String && value.isEmpty) {
+              return null;
+            }
+
+            withValue++;
+          }
+
+          return null;
+        },
+      );
+    }
+
+    return addCustomValidaton(
+      key: 'body',
+      validation: (value) {
+        if (withValue < min) {
+          return 'At least one of the following fields must be provided: $fields';
+        }
+
+        return null;
+      },
+    );
+  }
+
+  void addEmailValidation({bool required = true}) {
+    return addCustomValidaton<String>(
+      key: 'email',
+      validation: (value) {
+        if (!required && value == null) {
+          return null;
+        }
+
+        if (value == null || value.isEmpty) {
+          return 'Email is required';
+        }
+
+        if (!value.contains('@')) {
+          return 'Email is invalid';
+        }
+
+        return null;
+      },
+    );
+  }
+
+  void _removeErrorEntryIfEmpty(String key) {
+    final errors = _errors[key];
+
+    if (errors == null || errors.isEmpty) {
+      _errors.remove(key);
+    }
+  }
+
+  void addPasswordValidation() {
+    return addCustomValidaton<String>(
+      key: 'password',
+      validation: (password) {
+        password ??= '';
+        if (password.isEmpty) {
+          return 'Password is required';
+        }
+
+        if (password.length < 6) {
+          return 'Password must have at least 6 characters';
+        }
+
+        return null;
+      },
+    );
+  }
+
+  void addCustomValidaton<ValueType extends Object?>({
+    required String key,
+    required String? Function(ValueType? value) validation,
+  }) {
+    final error = validation(_map[key] as ValueType?);
+    _errors[key] ??= [];
 
     if (error != null) {
-      _errors[fieldName] ??= [];
-      _errors[fieldName]!.add(error);
+      _errors[key]!.add(error);
     }
 
-    if (_errors[fieldName]!.isEmpty) {
-      _errors.remove(fieldName);
-    }
-    return this;
+    _removeErrorEntryIfEmpty(key);
   }
 
   @override

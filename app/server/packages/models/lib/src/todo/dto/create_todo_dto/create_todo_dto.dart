@@ -1,7 +1,7 @@
 import 'package:either_dart/either.dart';
+import 'package:exceptions/exceptions.dart';
 import 'package:failures/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:typedefs/typedefs.dart';
 import 'package:validator/validator.dart';
 
 part 'create_todo_dto.g.dart';
@@ -21,33 +21,33 @@ class CreateTodoDto with _$CreateTodoDto {
     Map<String, dynamic> json,
   ) {
     final validator = MapValidator(json)
-      ..addCustomValidator<String>(
-        fieldName: 'title',
-        validation: (value) {
-          if (value == null || value.isEmpty) {
-            return 'Title is required';
-          }
+      ..addRequiredStringValidation('title')
+      ..addNullableAndNotEmptyValidation('description');
 
-          return null;
-        },
-      )
-      ..addCustomValidator<String>(
-        fieldName: 'description',
-        validation: (value) {
-          if (value != null && value.isEmpty) {
-            json.remove('description');
-          }
+    try {
+      const failureMessage = 'Validation failed';
 
-          return null;
-        },
+      if (validator.isValid) {
+        try {
+          return Right(CreateTodoDto.fromJson(json));
+        } catch (e) {
+          throw const ValidationException(
+            failureMessage,
+            {
+              'body': ['invalid body'],
+            },
+          );
+        }
+      } else {
+        throw ValidationException(failureMessage, validator.errors);
+      }
+    } on ValidationException catch (e) {
+      return Left(
+        ValidationFailure(
+          message: e.message,
+          errors: e.errors,
+        ),
       );
-
-    if (validator.isValid) {
-      return Right(CreateTodoDto.fromJson(json));
     }
-
-    return Left(
-      ValidationFailure(message: 'Validation failed', errors: validator.errors),
-    );
   }
 }

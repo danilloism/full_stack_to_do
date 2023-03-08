@@ -23,10 +23,101 @@ mixin _$CreateUserDto {
   String get email => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CreateUserDtoCopyWith<CreateUserDto> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-@JsonSerializable(createToJson: false)
+abstract class $CreateUserDtoCopyWith<$Res> {
+  factory $CreateUserDtoCopyWith(
+          CreateUserDto value, $Res Function(CreateUserDto) then) =
+      _$CreateUserDtoCopyWithImpl<$Res, CreateUserDto>;
+  @useResult
+  $Res call({String email, String name, String password});
+}
+
+/// @nodoc
+class _$CreateUserDtoCopyWithImpl<$Res, $Val extends CreateUserDto>
+    implements $CreateUserDtoCopyWith<$Res> {
+  _$CreateUserDtoCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? name = null,
+    Object? password = null,
+  }) {
+    return _then(_value.copyWith(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_CreateUserDtoCopyWith<$Res>
+    implements $CreateUserDtoCopyWith<$Res> {
+  factory _$$_CreateUserDtoCopyWith(
+          _$_CreateUserDto value, $Res Function(_$_CreateUserDto) then) =
+      __$$_CreateUserDtoCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String email, String name, String password});
+}
+
+/// @nodoc
+class __$$_CreateUserDtoCopyWithImpl<$Res>
+    extends _$CreateUserDtoCopyWithImpl<$Res, _$_CreateUserDto>
+    implements _$$_CreateUserDtoCopyWith<$Res> {
+  __$$_CreateUserDtoCopyWithImpl(
+      _$_CreateUserDto _value, $Res Function(_$_CreateUserDto) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? name = null,
+    Object? password = null,
+  }) {
+    return _then(_$_CreateUserDto(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
 class _$_CreateUserDto implements _CreateUserDto {
   const _$_CreateUserDto(
       {required this.email, required this.name, required this.password});
@@ -55,6 +146,19 @@ class _$_CreateUserDto implements _CreateUserDto {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, email, name, password);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CreateUserDtoCopyWith<_$_CreateUserDto> get copyWith =>
+      __$$_CreateUserDtoCopyWithImpl<_$_CreateUserDto>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CreateUserDtoToJson(
+      this,
+    );
+  }
 }
 
 abstract class _CreateUserDto implements CreateUserDto {
@@ -72,4 +176,8 @@ abstract class _CreateUserDto implements CreateUserDto {
   String get name;
   @override
   String get password;
+  @override
+  @JsonKey(ignore: true)
+  _$$_CreateUserDtoCopyWith<_$_CreateUserDto> get copyWith =>
+      throw _privateConstructorUsedError;
 }

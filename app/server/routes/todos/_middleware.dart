@@ -8,7 +8,7 @@ Handler middleware(Handler handler) {
     provider<TodoController>(
       (context) => TodoController(
         TodoRepositoryImpl(
-          DbDataSource(context.read()),
+          TodoDataSourceImpl(context.read()),
         ),
       ),
     ),

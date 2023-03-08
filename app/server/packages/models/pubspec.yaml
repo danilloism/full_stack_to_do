@@ -15,6 +15,8 @@ dev_dependencies:
   very_good_analysis: ^4.0.0
 dependencies:
   either_dart: ^0.3.0
+  exceptions:
+    path: ../exceptions
   failures:
     path: ../failures
   freezed_annotation: ^2.2.0

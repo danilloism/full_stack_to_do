@@ -1,7 +1,9 @@
 import 'package:either_dart/either.dart';
+import 'package:exceptions/exceptions.dart';
 import 'package:failures/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:typedefs/typedefs.dart';
+import 'package:validator/validator.dart';
 
 part 'update_todo_dto.g.dart';
 part 'update_todo_dto.freezed.dart';
@@ -20,28 +22,38 @@ class UpdateTodoDto with _$UpdateTodoDto {
   static Either<ValidationFailure, UpdateTodoDto> validated(
     Map<String, dynamic> json,
   ) {
-    // ignore: omit_local_variable_types
-    final ValidationErrors errors = {};
+    final validator = MapValidator(json)
+      ..addMinNumberOfFieldsRequiredValidaton(
+        fields: {'title', 'description', 'completed'},
+        min: 1,
+      )
+      ..addNullableAndNotEmptyValidation('title')
+      ..addNullableAndNotEmptyValidation('description');
 
-    final title = json['title'] as String?;
-    if (title == null || title.isEmpty) {
-      errors['title'] = ['At least one field must be provided'];
+    try {
+      const failureMessage = 'Validation failed';
+
+      if (validator.isValid) {
+        try {
+          return Right(UpdateTodoDto.fromJson(json));
+        } catch (e) {
+          throw const ValidationException(
+            failureMessage,
+            {
+              'body': ['invalid body'],
+            },
+          );
+        }
+      } else {
+        throw ValidationException(failureMessage, validator.errors);
+      }
+    } on ValidationException catch (e) {
+      return Left(
+        ValidationFailure(
+          message: e.message,
+          errors: e.errors,
+        ),
+      );
     }
-
-    if (json['description'] == null) {
-      errors['description'] = ['At least one field must be provided'];
-    }
-
-    if (json['completed'] == null) {
-      errors['completed'] = ['At least one field must be provided'];
-    }
-
-    if (errors.length < 3) {
-      return Right(UpdateTodoDto.fromJson(json));
-    }
-
-    return Left(
-      ValidationFailure(message: 'Validation failed', errors: errors),
-    );
   }
 }

@@ -18,7 +18,6 @@ abstract class Failure {
 
 @freezed
 class NetworkFailure with _$NetworkFailure implements Failure {
-  @Implements<Failure>()
   const factory NetworkFailure({
     required String message,
     @JsonKey(ignore: true) required int statusCode,

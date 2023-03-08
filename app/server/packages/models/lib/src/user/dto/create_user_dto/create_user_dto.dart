@@ -6,7 +6,7 @@ import 'package:validator/validator.dart';
 part 'create_user_dto.g.dart';
 part 'create_user_dto.freezed.dart';
 
-@Freezed(toJson: false, copyWith: false, toStringOverride: false)
+@Freezed(toStringOverride: false)
 class CreateUserDto with _$CreateUserDto {
   const factory CreateUserDto({
     required String email,

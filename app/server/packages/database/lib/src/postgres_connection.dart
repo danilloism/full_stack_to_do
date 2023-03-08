@@ -8,6 +8,8 @@ abstract class PgConnection extends _DatabaseConnection {
     String query, {
     Map<String, dynamic>? substitutionValues,
   });
+
+  PgConnection copyConnection();
 }
 
 class PgClient extends PgConnection {
@@ -22,6 +24,17 @@ class PgClient extends PgConnection {
   }
 
   late final PostgreSQLConnection _db;
+
+  @override
+  PgConnection copyConnection() => PgClient(
+        DatabaseOptions(
+          host: _options.host,
+          port: _options.port,
+          name: _options.name,
+          username: _options.username,
+          password: _options.password,
+        ),
+      );
 
   @override
   Future<void> open() async {
