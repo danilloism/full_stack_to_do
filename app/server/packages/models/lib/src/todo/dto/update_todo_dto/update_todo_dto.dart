@@ -6,7 +6,7 @@ import 'package:typedefs/typedefs.dart';
 part 'update_todo_dto.g.dart';
 part 'update_todo_dto.freezed.dart';
 
-@freezed
+@Freezed(copyWith: false, toStringOverride: false)
 class UpdateTodoDto with _$UpdateTodoDto {
   const factory UpdateTodoDto({
     String? title,

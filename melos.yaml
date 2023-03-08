@@ -18,3 +18,8 @@ scripts:
       depends-on: build_runner
   gen:
     run: melos run gen:select --no-select
+  gen:watch:
+    run: melos exec -- dart pub run build_runner watch --delete-conflicting-outputs
+    description: Runs build_runner watcher on selected package
+    select-package:
+      depends-on: build_runner

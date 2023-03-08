@@ -1,8 +1,7 @@
 import 'package:either_dart/either.dart';
 import 'package:exceptions/exceptions.dart';
 import 'package:failures/failures.dart';
-
-typedef TodoId = int;
+import 'package:typedefs/src/id.dart';
 
 typedef ValidationErrors = Map<String, List<String>>;
 

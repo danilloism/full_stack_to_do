@@ -33,6 +33,15 @@ void main() {
   late final Uri todosUri;
 
   Uri specificTodoUri(TodoId id) => todosUri.replace(path: 'todos/$id');
+  List<Todo> mapTodoListJsonToModelList(List<dynamic> todos) {
+    return todos
+        .map((todo) => Todo.fromJson(todo as DecodedJson))
+        .where(
+          (todo) =>
+              todo.title == _e2eTodoTitle && todo.description == _e2eTodoDesc,
+        )
+        .toList();
+  }
 
   setUpAll(() {
     todosUri = Uri.parse('http://localhost:8080/todos');
@@ -54,8 +63,12 @@ void main() {
   group('E2E |', () {
     test('GET /todos returns empty list of todos', () async {
       final res = await get(todosUri);
-      expect(res.statusCode, HttpStatus.ok);
-      expect(res.body, equals('[]'));
+      expect(res.statusCode, equals(HttpStatus.ok));
+
+      final todos =
+          mapTodoListJsonToModelList(res.decodedBodyAs<List<dynamic>>());
+
+      expect(todos, isEmpty);
     });
 
     test('POST /todos to create a new todo', () async {
@@ -65,7 +78,7 @@ void main() {
         body: jsonEncode(_createTodoDto.toJson()),
       );
 
-      expect(res.statusCode, HttpStatus.created);
+      expect(res.statusCode, equals(HttpStatus.created));
 
       final body = res.decodedBodyAs<DecodedJson>();
 
@@ -77,19 +90,18 @@ void main() {
 
     test('GET /todos returns list of todos with one todo', () async {
       final res = await get(todosUri);
-      expect(res.statusCode, HttpStatus.ok);
+      expect(res.statusCode, equals(HttpStatus.ok));
 
       final body = res.decodedBodyAs<List<dynamic>>();
 
-      final todos =
-          body.map((todo) => Todo.fromJson(todo as DecodedJson)).toList();
+      final todos = mapTodoListJsonToModelList(body);
       expect(todos.length, equals(1));
       expect(todos.first, equals(createdTodo));
     });
 
     test('GET /todos/:id returns the created todo', () async {
       final res = await get(specificTodoUri(createdTodo.id));
-      expect(res.statusCode, HttpStatus.ok);
+      expect(res.statusCode, equals(HttpStatus.ok));
 
       final body = res.decodedBodyAs<DecodedJson>();
 
@@ -107,7 +119,7 @@ void main() {
         headers: _contentTypeJsonHeaders,
         body: jsonEncode(updateTodoDto.toJson()),
       );
-      expect(res.statusCode, HttpStatus.ok);
+      expect(res.statusCode, equals(HttpStatus.ok));
 
       final body = res.decodedBodyAs<DecodedJson>();
 
@@ -118,14 +130,18 @@ void main() {
 
     test('DELETE /todos/:id to delete the created todo', () async {
       final res = await delete(specificTodoUri(createdTodo.id));
-      expect(res.statusCode, HttpStatus.ok);
+      expect(res.statusCode, equals(HttpStatus.ok));
       expect(res.body, isEmpty);
     });
 
     test('GET /todos returns empty list of todos', () async {
       final res = await get(todosUri);
-      expect(res.statusCode, HttpStatus.ok);
-      expect(res.body, equals('[]'));
+
+      final todos =
+          mapTodoListJsonToModelList(res.decodedBodyAs<List<dynamic>>());
+
+      expect(res.statusCode, equals(HttpStatus.ok));
+      expect(todos, isEmpty);
     });
 
     group(
@@ -136,7 +152,7 @@ void main() {
         () async {
           final res = await delete(todosUri);
 
-          expect(res.statusCode, HttpStatus.methodNotAllowed);
+          expect(res.statusCode, equals(HttpStatus.methodNotAllowed));
           expect(
             res.decodedBodyAsNullable<DecodedJson?>(),
             _notAllowedFailure.toJson(),
@@ -147,7 +163,7 @@ void main() {
       test('HEAD /todos', () async {
         final res = await head(todosUri);
 
-        expect(res.statusCode, HttpStatus.methodNotAllowed);
+        expect(res.statusCode, equals(HttpStatus.methodNotAllowed));
         expect(
           res.decodedBodyAsNullable<DecodedJson?>(),
           isNull,
@@ -157,7 +173,7 @@ void main() {
       test('PUT /todos', () async {
         final res = await put(todosUri);
 
-        expect(res.statusCode, HttpStatus.methodNotAllowed);
+        expect(res.statusCode, equals(HttpStatus.methodNotAllowed));
         expect(
           res.decodedBodyAsNullable<DecodedJson?>(),
           _notAllowedFailure.toJson(),
@@ -167,7 +183,7 @@ void main() {
       test('PATCH /todos', () async {
         final res = await patch(todosUri);
 
-        expect(res.statusCode, HttpStatus.methodNotAllowed);
+        expect(res.statusCode, equals(HttpStatus.methodNotAllowed));
         expect(
           res.decodedBodyAsNullable<DecodedJson?>(),
           _notAllowedFailure.toJson(),

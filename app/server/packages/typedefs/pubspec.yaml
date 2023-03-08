@@ -17,3 +17,4 @@ dependencies:
     path: ../exceptions
   failures:
     path: ../failures
+  uuid_type: ^2.0.0
