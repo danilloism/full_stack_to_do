@@ -9,6 +9,8 @@ import 'package:models/models.dart';
 import 'package:repository/src/password_hasher_service.dart';
 import 'package:typedefs/typedefs.dart';
 
+export './password_hasher_service.dart';
+
 abstract class UserRepository {
   Future<Either<Failure, User>> getById(UserId id);
   Future<Either<Failure, User>> create(CreateUserDto user);

@@ -6,13 +6,17 @@ import 'package:dart_frog/dart_frog.dart';
 import 'package:either_dart/either.dart';
 import 'package:exceptions/exceptions.dart';
 import 'package:failures/failures.dart';
+import 'package:server/request_handlers/unimplemented_request_handler.dart';
 
 abstract class HttpController {
-  FutureOr<Response> getAll(Request req);
-  FutureOr<Response> getOne(Request req, String id);
-  FutureOr<Response> create(Request req);
-  FutureOr<Response> update(Request req, String id);
-  FutureOr<Response> remove(Request req, String id);
+  FutureOr<Response> getAll(Request req) => unimplementedRequestHandler();
+  FutureOr<Response> getOne(Request req, String id) =>
+      unimplementedRequestHandler();
+  FutureOr<Response> create(Request req) => unimplementedRequestHandler();
+  FutureOr<Response> update(Request req, String id) =>
+      unimplementedRequestHandler();
+  FutureOr<Response> remove(Request req, String id) =>
+      unimplementedRequestHandler();
 
   Future<Either<Failure, Map<String, dynamic>>> parseJson(
     Request req,
@@ -52,10 +56,4 @@ abstract class HttpController {
         body: failure.toJson(),
         statusCode: failure.statusCode,
       );
-
-  Response notAllowed() {
-    const notAllowedFailure = NotAllowedFailure();
-
-    return mapFailureToResponse(notAllowedFailure);
-  }
 }

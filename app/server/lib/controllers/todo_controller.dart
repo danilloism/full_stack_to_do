@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:dart_frog/dart_frog.dart';
 import 'package:models/models.dart';
 import 'package:repository/repository.dart';
-import 'package:server/controller/http_controller.dart';
+import 'package:server/controllers/http_controller.dart';
 import 'package:typedefs/typedefs.dart';
 
 class TodoController extends HttpController {
