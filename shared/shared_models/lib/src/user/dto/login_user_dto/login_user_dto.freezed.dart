@@ -14,28 +14,75 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-LoginUserDto _$LoginUserDtoFromJson(Map<String, dynamic> json) {
-  return _LoginUserDto.fromJson(json);
-}
-
 /// @nodoc
 mixin _$LoginUserDto {
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) pure,
+    required TResult Function(String email, String password) valid,
+    required TResult Function(
+            ValidationFailure failure, String email, String password)
+        invalid,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? pure,
+    TResult? Function(String email, String password)? valid,
+    TResult? Function(ValidationFailure failure, String email, String password)?
+        invalid,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? pure,
+    TResult Function(String email, String password)? valid,
+    TResult Function(ValidationFailure failure, String email, String password)?
+        invalid,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoginUserDto value) pure,
+    required TResult Function(_ValidLoginUserDto value) valid,
+    required TResult Function(_InvalidLoginUserDto value) invalid,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginUserDto value)? pure,
+    TResult? Function(_ValidLoginUserDto value)? valid,
+    TResult? Function(_InvalidLoginUserDto value)? invalid,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginUserDto value)? pure,
+    TResult Function(_ValidLoginUserDto value)? valid,
+    TResult Function(_InvalidLoginUserDto value)? invalid,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-@JsonSerializable(createToJson: false)
+@JsonSerializable(createFactory: false)
 class _$_LoginUserDto implements _LoginUserDto {
-  const _$_LoginUserDto({required this.email, required this.password});
-
-  factory _$_LoginUserDto.fromJson(Map<String, dynamic> json) =>
-      _$$_LoginUserDtoFromJson(json);
+  const _$_LoginUserDto(
+      {required this.email, required this.password, final String? $type})
+      : $type = $type ?? 'pure';
 
   @override
   final String email;
   @override
   final String password;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   bool operator ==(dynamic other) {
@@ -50,6 +97,85 @@ class _$_LoginUserDto implements _LoginUserDto {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, email, password);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) pure,
+    required TResult Function(String email, String password) valid,
+    required TResult Function(
+            ValidationFailure failure, String email, String password)
+        invalid,
+  }) {
+    return pure(email, password);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? pure,
+    TResult? Function(String email, String password)? valid,
+    TResult? Function(ValidationFailure failure, String email, String password)?
+        invalid,
+  }) {
+    return pure?.call(email, password);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? pure,
+    TResult Function(String email, String password)? valid,
+    TResult Function(ValidationFailure failure, String email, String password)?
+        invalid,
+    required TResult orElse(),
+  }) {
+    if (pure != null) {
+      return pure(email, password);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoginUserDto value) pure,
+    required TResult Function(_ValidLoginUserDto value) valid,
+    required TResult Function(_InvalidLoginUserDto value) invalid,
+  }) {
+    return pure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginUserDto value)? pure,
+    TResult? Function(_ValidLoginUserDto value)? valid,
+    TResult? Function(_InvalidLoginUserDto value)? invalid,
+  }) {
+    return pure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginUserDto value)? pure,
+    TResult Function(_ValidLoginUserDto value)? valid,
+    TResult Function(_InvalidLoginUserDto value)? invalid,
+    required TResult orElse(),
+  }) {
+    if (pure != null) {
+      return pure(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_LoginUserDtoToJson(
+      this,
+    );
+  }
 }
 
 abstract class _LoginUserDto implements LoginUserDto {
@@ -57,9 +183,251 @@ abstract class _LoginUserDto implements LoginUserDto {
       {required final String email,
       required final String password}) = _$_LoginUserDto;
 
-  factory _LoginUserDto.fromJson(Map<String, dynamic> json) =
-      _$_LoginUserDto.fromJson;
+  @override
+  String get email;
+  @override
+  String get password;
+}
 
+/// @nodoc
+@JsonSerializable(createFactory: false)
+class _$_ValidLoginUserDto implements _ValidLoginUserDto {
+  const _$_ValidLoginUserDto(
+      {required this.email, required this.password, final String? $type})
+      : $type = $type ?? 'valid';
+
+  @override
+  final String email;
+  @override
+  final String password;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ValidLoginUserDto &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, email, password);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) pure,
+    required TResult Function(String email, String password) valid,
+    required TResult Function(
+            ValidationFailure failure, String email, String password)
+        invalid,
+  }) {
+    return valid(email, password);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? pure,
+    TResult? Function(String email, String password)? valid,
+    TResult? Function(ValidationFailure failure, String email, String password)?
+        invalid,
+  }) {
+    return valid?.call(email, password);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? pure,
+    TResult Function(String email, String password)? valid,
+    TResult Function(ValidationFailure failure, String email, String password)?
+        invalid,
+    required TResult orElse(),
+  }) {
+    if (valid != null) {
+      return valid(email, password);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoginUserDto value) pure,
+    required TResult Function(_ValidLoginUserDto value) valid,
+    required TResult Function(_InvalidLoginUserDto value) invalid,
+  }) {
+    return valid(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginUserDto value)? pure,
+    TResult? Function(_ValidLoginUserDto value)? valid,
+    TResult? Function(_InvalidLoginUserDto value)? invalid,
+  }) {
+    return valid?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginUserDto value)? pure,
+    TResult Function(_ValidLoginUserDto value)? valid,
+    TResult Function(_InvalidLoginUserDto value)? invalid,
+    required TResult orElse(),
+  }) {
+    if (valid != null) {
+      return valid(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ValidLoginUserDtoToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ValidLoginUserDto implements LoginUserDto {
+  const factory _ValidLoginUserDto(
+      {required final String email,
+      required final String password}) = _$_ValidLoginUserDto;
+
+  @override
+  String get email;
+  @override
+  String get password;
+}
+
+/// @nodoc
+@JsonSerializable(createFactory: false)
+class _$_InvalidLoginUserDto implements _InvalidLoginUserDto {
+  const _$_InvalidLoginUserDto(this.failure,
+      {this.email = '', this.password = '', final String? $type})
+      : $type = $type ?? 'invalid';
+
+  @override
+  final ValidationFailure failure;
+  @override
+  @JsonKey()
+  final String email;
+  @override
+  @JsonKey()
+  final String password;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_InvalidLoginUserDto &&
+            (identical(other.failure, failure) || other.failure == failure) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, failure, email, password);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) pure,
+    required TResult Function(String email, String password) valid,
+    required TResult Function(
+            ValidationFailure failure, String email, String password)
+        invalid,
+  }) {
+    return invalid(failure, email, password);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? pure,
+    TResult? Function(String email, String password)? valid,
+    TResult? Function(ValidationFailure failure, String email, String password)?
+        invalid,
+  }) {
+    return invalid?.call(failure, email, password);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? pure,
+    TResult Function(String email, String password)? valid,
+    TResult Function(ValidationFailure failure, String email, String password)?
+        invalid,
+    required TResult orElse(),
+  }) {
+    if (invalid != null) {
+      return invalid(failure, email, password);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoginUserDto value) pure,
+    required TResult Function(_ValidLoginUserDto value) valid,
+    required TResult Function(_InvalidLoginUserDto value) invalid,
+  }) {
+    return invalid(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginUserDto value)? pure,
+    TResult? Function(_ValidLoginUserDto value)? valid,
+    TResult? Function(_InvalidLoginUserDto value)? invalid,
+  }) {
+    return invalid?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginUserDto value)? pure,
+    TResult Function(_ValidLoginUserDto value)? valid,
+    TResult Function(_InvalidLoginUserDto value)? invalid,
+    required TResult orElse(),
+  }) {
+    if (invalid != null) {
+      return invalid(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_InvalidLoginUserDtoToJson(
+      this,
+    );
+  }
+}
+
+abstract class _InvalidLoginUserDto implements LoginUserDto {
+  const factory _InvalidLoginUserDto(final ValidationFailure failure,
+      {final String email, final String password}) = _$_InvalidLoginUserDto;
+
+  ValidationFailure get failure;
   @override
   String get email;
   @override

@@ -10,7 +10,7 @@ part 'todo.freezed.dart';
 part 'todo.g.dart';
 
 /// Todo model
-@freezed
+@Freezed(fromJson: true)
 class Todo with _$Todo {
   /// Todo model constructor
   const factory Todo({

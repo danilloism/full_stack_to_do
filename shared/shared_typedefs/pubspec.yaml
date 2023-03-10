@@ -1,4 +1,4 @@
-name: typedefs
+name: shared_typedefs
 description: A Very Good Project created by Very Good CLI.
 version: 0.1.0+1
 publish_to: none
@@ -12,10 +12,4 @@ dev_dependencies:
   very_good_analysis: ^4.0.0
 
 dependencies:
-  either_dart: ^0.3.0
-  exceptions:
-    path: ../exceptions
-  failures:
-    path: ../failures
-  shared_typedefs:
-    path: ../../../../shared/shared_typedefs
+  uuid_type: ^2.0.0

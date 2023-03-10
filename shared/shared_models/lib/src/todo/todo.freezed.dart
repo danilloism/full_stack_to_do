@@ -205,11 +205,6 @@ class _$_Todo implements _Todo {
   final bool completed;
 
   @override
-  String toString() {
-    return 'Todo(id: $id, userId: $userId, title: $title, createdAt: $createdAt, updatedAt: $updatedAt, description: $description, completed: $completed)';
-  }
-
-  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&

@@ -9,17 +9,23 @@ part 'create_todo_dto.freezed.dart';
 
 @Freezed(copyWith: false, toStringOverride: false)
 class CreateTodoDto with _$CreateTodoDto {
-  const factory CreateTodoDto({
+  const factory CreateTodoDto.pure({
     required String title,
     String? description,
-  }) = _CreateTodoDto;
+  }) = PureCreateTodoDto;
 
-  factory CreateTodoDto.fromJson(Map<String, dynamic> json) =>
-      _$CreateTodoDtoFromJson(json);
+  const factory CreateTodoDto.valid({
+    required String title,
+    String? description,
+  }) = ValidCreateTodoDto;
 
-  static Either<ValidationFailure, CreateTodoDto> validated(
-    Map<String, dynamic> json,
-  ) {
+  const factory CreateTodoDto.invalid(
+    ValidationFailure failure, {
+    @Default('') String title,
+    @Default(null) String? description,
+  }) = InvalidCreateTodoDto;
+
+  factory CreateTodoDto.fromJson(Map<String, dynamic> json) {
     final validator = JsonBodyValidator(json)
       ..addStringValidation(
         'title',
@@ -37,7 +43,10 @@ class CreateTodoDto with _$CreateTodoDto {
 
       if (validator.isValid) {
         try {
-          return Right(CreateTodoDto.fromJson(json));
+          return CreateTodoDto.valid(
+            title: json['title'] as String,
+            description: json['description'] as String?,
+          );
         } catch (e) {
           throw const ValidationException(
             failureMessage,
@@ -50,7 +59,10 @@ class CreateTodoDto with _$CreateTodoDto {
         throw ValidationException(failureMessage, validator.errors);
       }
     } on ValidationException catch (e) {
-      return Left(
+      // return Left(
+
+      // );
+      return CreateTodoDto.invalid(
         ValidationFailure(
           message: e.message,
           errors: e.errors,

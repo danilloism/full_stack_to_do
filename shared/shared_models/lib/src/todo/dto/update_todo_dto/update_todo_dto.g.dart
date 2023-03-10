@@ -6,14 +6,8 @@ part of 'update_todo_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_UpdateTodoDto _$$_UpdateTodoDtoFromJson(Map<String, dynamic> json) =>
-    _$_UpdateTodoDto(
-      title: json['title'] as String?,
-      description: json['description'] as String?,
-      completed: json['completed'] as bool?,
-    );
-
-Map<String, dynamic> _$$_UpdateTodoDtoToJson(_$_UpdateTodoDto instance) {
+Map<String, dynamic> _$$_PureUpdateTodoDtoToJson(
+    _$_PureUpdateTodoDto instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -25,5 +19,42 @@ Map<String, dynamic> _$$_UpdateTodoDtoToJson(_$_UpdateTodoDto instance) {
   writeNotNull('title', instance.title);
   writeNotNull('description', instance.description);
   writeNotNull('completed', instance.completed);
+  val['runtimeType'] = instance.$type;
+  return val;
+}
+
+Map<String, dynamic> _$$_InvalidUpdateTodoDtoToJson(
+    _$_InvalidUpdateTodoDto instance) {
+  final val = <String, dynamic>{
+    'failure': instance.failure.toJson(),
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('title', instance.title);
+  writeNotNull('description', instance.description);
+  writeNotNull('completed', instance.completed);
+  val['runtimeType'] = instance.$type;
+  return val;
+}
+
+Map<String, dynamic> _$$_ValidUpdateTodoDtoToJson(
+    _$_ValidUpdateTodoDto instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('title', instance.title);
+  writeNotNull('description', instance.description);
+  writeNotNull('completed', instance.completed);
+  val['runtimeType'] = instance.$type;
   return val;
 }

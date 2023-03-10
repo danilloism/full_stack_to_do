@@ -24,17 +24,18 @@ class UserController extends HttpController {
 
     final json = parsedBody.right;
 
-    final createUserDto = CreateUserDto.validated(json);
+    final dto = CreateUserDto.fromJson(json);
 
-    if (createUserDto.isLeft) {
-      return mapFailureToResponse(createUserDto.left);
-    }
+    return dto.maybeMap(
+      invalid: (value) => mapFailureToResponse(value.failure),
+      orElse: () async {
+        final res = await _repo.create(dto);
 
-    final res = await _repo.create(createUserDto.right);
-
-    return res.fold(
-      mapFailureToResponse,
-      (success) => _signAndSendToken(success, HttpStatus.created),
+        return res.fold(
+          mapFailureToResponse,
+          (success) => _signAndSendToken(success, HttpStatus.created),
+        );
+      },
     );
   }
 
@@ -46,15 +47,16 @@ class UserController extends HttpController {
     }
 
     final json = parsedBody.right;
-    final loginUserDto = LoginUserDto.validated(json);
+    final dto = LoginUserDto.fromJson(json);
 
-    if (loginUserDto.isLeft) {
-      return mapFailureToResponse(loginUserDto.left);
-    }
+    return dto.maybeMap(
+      invalid: (value) => mapFailureToResponse(value.failure),
+      orElse: () async {
+        final res = await _repo.login(dto);
 
-    final res = await _repo.login(loginUserDto.right);
-
-    return res.fold(mapFailureToResponse, _signAndSendToken);
+        return res.fold(mapFailureToResponse, _signAndSendToken);
+      },
+    );
   }
 
   Response _signAndSendToken(User user, [int? httpStatus]) {

@@ -6,16 +6,29 @@ part of 'create_user_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CreateUserDto _$$_CreateUserDtoFromJson(Map<String, dynamic> json) =>
-    _$_CreateUserDto(
-      email: json['email'] as String,
-      name: json['name'] as String,
-      password: json['password'] as String,
-    );
-
 Map<String, dynamic> _$$_CreateUserDtoToJson(_$_CreateUserDto instance) =>
     <String, dynamic>{
       'email': instance.email,
       'name': instance.name,
       'password': instance.password,
+      'runtimeType': instance.$type,
+    };
+
+Map<String, dynamic> _$$_ValidCreateUserDtoToJson(
+        _$_ValidCreateUserDto instance) =>
+    <String, dynamic>{
+      'email': instance.email,
+      'name': instance.name,
+      'password': instance.password,
+      'runtimeType': instance.$type,
+    };
+
+Map<String, dynamic> _$$_InvalidCreateUserDtoToJson(
+        _$_InvalidCreateUserDto instance) =>
+    <String, dynamic>{
+      'failure': instance.failure.toJson(),
+      'email': instance.email,
+      'name': instance.name,
+      'password': instance.password,
+      'runtimeType': instance.$type,
     };

@@ -21,20 +21,21 @@ class TodoController extends HttpController {
     }
 
     final json = parsedBody.right;
-    final dto = CreateTodoDto.validated(json);
+    final dto = CreateTodoDto.fromJson(json);
 
-    if (dto.isLeft) {
-      return mapFailureToResponse(dto.left);
-    }
+    return dto.maybeMap(
+      invalid: (value) => mapFailureToResponse(value.failure),
+      orElse: () async {
+        final res = await _repo.create(dto);
 
-    final res = await _repo.create(dto.right);
-
-    return res.fold(
-      mapFailureToResponse,
-      (success) => Response.json(
-        body: success.toJson(),
-        statusCode: HttpStatus.created,
-      ),
+        return res.fold(
+          mapFailureToResponse,
+          (success) => Response.json(
+            body: success.toJson(),
+            statusCode: HttpStatus.created,
+          ),
+        );
+      },
     );
   }
 
@@ -94,22 +95,23 @@ class TodoController extends HttpController {
     }
 
     final json = parsedBody.right;
-    final dto = UpdateTodoDto.validated(json);
+    final dto = UpdateTodoDto.fromJson(json);
 
-    if (dto.isLeft) {
-      return mapFailureToResponse(dto.left);
-    }
+    return dto.maybeMap(
+      invalid: (value) => mapFailureToResponse(value.failure),
+      orElse: () async {
+        final res = await _repo.update(
+          id: todoId.right,
+          dto: dto,
+        );
 
-    final res = await _repo.update(
-      id: todoId.right,
-      dto: dto.right,
-    );
-
-    return res.fold(
-      mapFailureToResponse,
-      (success) => Response.json(
-        body: success.toJson(),
-      ),
+        return res.fold(
+          mapFailureToResponse,
+          (success) => Response.json(
+            body: success.toJson(),
+          ),
+        );
+      },
     );
   }
 }

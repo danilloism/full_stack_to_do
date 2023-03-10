@@ -15,7 +15,6 @@ dev_dependencies:
   very_good_analysis: ^4.0.0
 
 dependencies:
-  either_dart: ^0.3.0
   exceptions:
     path: ../../app/server/packages/exceptions
   failures:

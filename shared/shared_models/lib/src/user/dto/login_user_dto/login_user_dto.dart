@@ -6,30 +6,45 @@ import 'package:validator/validator.dart';
 part 'login_user_dto.g.dart';
 part 'login_user_dto.freezed.dart';
 
-@Freezed(toJson: false, copyWith: false, toStringOverride: false)
+@Freezed(copyWith: false)
 class LoginUserDto with _$LoginUserDto {
-  const factory LoginUserDto({
+  const factory LoginUserDto.pure({
     required String email,
     required String password,
   }) = _LoginUserDto;
 
-  factory LoginUserDto.fromJson(Map<String, dynamic> json) =>
-      _$LoginUserDtoFromJson(json);
+  const factory LoginUserDto.valid({
+    required String email,
+    required String password,
+  }) = _ValidLoginUserDto;
 
-  static Either<ValidationFailure, LoginUserDto> validated(
-    Map<String, dynamic> json,
-  ) {
+  const factory LoginUserDto.invalid(
+    ValidationFailure failure, {
+    @Default('') String email,
+    @Default('') String password,
+  }) = _InvalidLoginUserDto;
+
+  factory LoginUserDto.fromJson(Map<String, dynamic> json) {
     final validator = JsonBodyValidator(json)
       ..addEmailValidation()
       ..addPasswordValidation();
 
-    if (validator.isValid) return Right(LoginUserDto.fromJson(json));
+    if (validator.isValid) {
+      return LoginUserDto.valid(
+        email: json['email'] as String,
+        password: json['password'] as String,
+      );
+    }
 
-    return Left(
+    return LoginUserDto.invalid(
       ValidationFailure(
         message: 'Validation failed',
         errors: validator.errors,
       ),
     );
+
+    // return Left(
+
+    // );
   }
 }

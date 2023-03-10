@@ -1,27 +1,38 @@
-import 'package:either_dart/either.dart';
 import 'package:exceptions/exceptions.dart';
 import 'package:failures/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:typedefs/typedefs.dart';
 import 'package:validator/validator.dart';
 
-part 'update_todo_dto.g.dart';
 part 'update_todo_dto.freezed.dart';
+part 'update_todo_dto.g.dart';
 
-@Freezed(copyWith: false, toStringOverride: false)
+@Freezed(
+  copyWith: false,
+  toStringOverride: false,
+  fromJson: false,
+  toJson: true,
+)
 class UpdateTodoDto with _$UpdateTodoDto {
-  const factory UpdateTodoDto({
+  const factory UpdateTodoDto.pure({
     String? title,
     String? description,
     bool? completed,
-  }) = _UpdateTodoDto;
+  }) = _PureUpdateTodoDto;
 
-  factory UpdateTodoDto.fromJson(Map<String, dynamic> json) =>
-      _$UpdateTodoDtoFromJson(json);
+  const factory UpdateTodoDto.invalid(
+    ValidationFailure failure, {
+    @Default(null) String? title,
+    @Default(null) String? description,
+    @Default(null) bool? completed,
+  }) = _InvalidUpdateTodoDto;
 
-  static Either<ValidationFailure, UpdateTodoDto> validated(
-    Map<String, dynamic> json,
-  ) {
+  const factory UpdateTodoDto.valid({
+    String? title,
+    String? description,
+    bool? completed,
+  }) = _ValidUpdateTodoDto;
+
+  factory UpdateTodoDto.fromJson(Map<String, dynamic> json) {
     final validator = JsonBodyValidator(json)
       ..addMinNumberOfFieldsRequiredValidaton(
         keys: {'title', 'description', 'completed'},
@@ -44,7 +55,11 @@ class UpdateTodoDto with _$UpdateTodoDto {
 
       if (validator.isValid) {
         try {
-          return Right(UpdateTodoDto.fromJson(json));
+          return UpdateTodoDto.valid(
+            title: json['title'] as String?,
+            completed: json['completed'] as bool?,
+            description: json['description'] as String?,
+          );
         } catch (e) {
           throw const ValidationException(
             failureMessage,
@@ -57,7 +72,7 @@ class UpdateTodoDto with _$UpdateTodoDto {
         throw ValidationException(failureMessage, validator.errors);
       }
     } on ValidationException catch (e) {
-      return Left(
+      return UpdateTodoDto.invalid(
         ValidationFailure(
           message: e.message,
           errors: e.errors,

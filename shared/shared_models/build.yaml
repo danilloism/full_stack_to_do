@@ -12,3 +12,8 @@ targets:
           generic_argument_factories: false
           ignore_unannotated: false
           include_if_null: false
+      freezed:
+        options:
+          to_json: true
+          to_string_override: false
+          copy_with: true

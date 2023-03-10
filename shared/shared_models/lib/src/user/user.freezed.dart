@@ -172,11 +172,6 @@ class _$_User implements _User {
   final String password;
 
   @override
-  String toString() {
-    return 'User(id: $id, email: $email, name: $name, createdAt: $createdAt, password: $password)';
-  }
-
-  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&

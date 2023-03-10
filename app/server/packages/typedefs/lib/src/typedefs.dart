@@ -1,7 +1,8 @@
 import 'package:either_dart/either.dart';
 import 'package:exceptions/exceptions.dart';
 import 'package:failures/failures.dart';
-import 'package:typedefs/src/id.dart';
+import 'package:shared_typedefs/shared_typedefs.dart';
+export 'package:shared_typedefs/shared_typedefs.dart';
 
 typedef ValidationErrors = Map<String, List<String>>;
 

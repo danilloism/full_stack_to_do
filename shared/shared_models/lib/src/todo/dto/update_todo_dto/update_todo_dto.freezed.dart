@@ -14,26 +14,77 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-UpdateTodoDto _$UpdateTodoDtoFromJson(Map<String, dynamic> json) {
-  return _UpdateTodoDto.fromJson(json);
-}
-
 /// @nodoc
 mixin _$UpdateTodoDto {
   String? get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   bool? get completed => throw _privateConstructorUsedError;
-
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String? title, String? description, bool? completed)
+        pure,
+    required TResult Function(ValidationFailure failure, String? title,
+            String? description, bool? completed)
+        invalid,
+    required TResult Function(
+            String? title, String? description, bool? completed)
+        valid,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? title, String? description, bool? completed)?
+        pure,
+    TResult? Function(ValidationFailure failure, String? title,
+            String? description, bool? completed)?
+        invalid,
+    TResult? Function(String? title, String? description, bool? completed)?
+        valid,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? title, String? description, bool? completed)? pure,
+    TResult Function(ValidationFailure failure, String? title,
+            String? description, bool? completed)?
+        invalid,
+    TResult Function(String? title, String? description, bool? completed)?
+        valid,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PureUpdateTodoDto value) pure,
+    required TResult Function(_InvalidUpdateTodoDto value) invalid,
+    required TResult Function(_ValidUpdateTodoDto value) valid,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PureUpdateTodoDto value)? pure,
+    TResult? Function(_InvalidUpdateTodoDto value)? invalid,
+    TResult? Function(_ValidUpdateTodoDto value)? valid,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PureUpdateTodoDto value)? pure,
+    TResult Function(_InvalidUpdateTodoDto value)? invalid,
+    TResult Function(_ValidUpdateTodoDto value)? valid,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$_UpdateTodoDto implements _UpdateTodoDto {
-  const _$_UpdateTodoDto({this.title, this.description, this.completed});
-
-  factory _$_UpdateTodoDto.fromJson(Map<String, dynamic> json) =>
-      _$$_UpdateTodoDtoFromJson(json);
+@JsonSerializable(createFactory: false)
+class _$_PureUpdateTodoDto implements _PureUpdateTodoDto {
+  const _$_PureUpdateTodoDto(
+      {this.title, this.description, this.completed, final String? $type})
+      : $type = $type ?? 'pure';
 
   @override
   final String? title;
@@ -42,11 +93,14 @@ class _$_UpdateTodoDto implements _UpdateTodoDto {
   @override
   final bool? completed;
 
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateTodoDto &&
+            other is _$_PureUpdateTodoDto &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -59,21 +113,382 @@ class _$_UpdateTodoDto implements _UpdateTodoDto {
   int get hashCode => Object.hash(runtimeType, title, description, completed);
 
   @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String? title, String? description, bool? completed)
+        pure,
+    required TResult Function(ValidationFailure failure, String? title,
+            String? description, bool? completed)
+        invalid,
+    required TResult Function(
+            String? title, String? description, bool? completed)
+        valid,
+  }) {
+    return pure(title, description, completed);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? title, String? description, bool? completed)?
+        pure,
+    TResult? Function(ValidationFailure failure, String? title,
+            String? description, bool? completed)?
+        invalid,
+    TResult? Function(String? title, String? description, bool? completed)?
+        valid,
+  }) {
+    return pure?.call(title, description, completed);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? title, String? description, bool? completed)? pure,
+    TResult Function(ValidationFailure failure, String? title,
+            String? description, bool? completed)?
+        invalid,
+    TResult Function(String? title, String? description, bool? completed)?
+        valid,
+    required TResult orElse(),
+  }) {
+    if (pure != null) {
+      return pure(title, description, completed);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PureUpdateTodoDto value) pure,
+    required TResult Function(_InvalidUpdateTodoDto value) invalid,
+    required TResult Function(_ValidUpdateTodoDto value) valid,
+  }) {
+    return pure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PureUpdateTodoDto value)? pure,
+    TResult? Function(_InvalidUpdateTodoDto value)? invalid,
+    TResult? Function(_ValidUpdateTodoDto value)? valid,
+  }) {
+    return pure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PureUpdateTodoDto value)? pure,
+    TResult Function(_InvalidUpdateTodoDto value)? invalid,
+    TResult Function(_ValidUpdateTodoDto value)? valid,
+    required TResult orElse(),
+  }) {
+    if (pure != null) {
+      return pure(this);
+    }
+    return orElse();
+  }
+
+  @override
   Map<String, dynamic> toJson() {
-    return _$$_UpdateTodoDtoToJson(
+    return _$$_PureUpdateTodoDtoToJson(
       this,
     );
   }
 }
 
-abstract class _UpdateTodoDto implements UpdateTodoDto {
-  const factory _UpdateTodoDto(
+abstract class _PureUpdateTodoDto implements UpdateTodoDto {
+  const factory _PureUpdateTodoDto(
       {final String? title,
       final String? description,
-      final bool? completed}) = _$_UpdateTodoDto;
+      final bool? completed}) = _$_PureUpdateTodoDto;
 
-  factory _UpdateTodoDto.fromJson(Map<String, dynamic> json) =
-      _$_UpdateTodoDto.fromJson;
+  @override
+  String? get title;
+  @override
+  String? get description;
+  @override
+  bool? get completed;
+}
+
+/// @nodoc
+@JsonSerializable(createFactory: false)
+class _$_InvalidUpdateTodoDto implements _InvalidUpdateTodoDto {
+  const _$_InvalidUpdateTodoDto(this.failure,
+      {this.title = null,
+      this.description = null,
+      this.completed = null,
+      final String? $type})
+      : $type = $type ?? 'invalid';
+
+  @override
+  final ValidationFailure failure;
+  @override
+  @JsonKey()
+  final String? title;
+  @override
+  @JsonKey()
+  final String? description;
+  @override
+  @JsonKey()
+  final bool? completed;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_InvalidUpdateTodoDto &&
+            (identical(other.failure, failure) || other.failure == failure) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.completed, completed) ||
+                other.completed == completed));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, failure, title, description, completed);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String? title, String? description, bool? completed)
+        pure,
+    required TResult Function(ValidationFailure failure, String? title,
+            String? description, bool? completed)
+        invalid,
+    required TResult Function(
+            String? title, String? description, bool? completed)
+        valid,
+  }) {
+    return invalid(failure, title, description, completed);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? title, String? description, bool? completed)?
+        pure,
+    TResult? Function(ValidationFailure failure, String? title,
+            String? description, bool? completed)?
+        invalid,
+    TResult? Function(String? title, String? description, bool? completed)?
+        valid,
+  }) {
+    return invalid?.call(failure, title, description, completed);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? title, String? description, bool? completed)? pure,
+    TResult Function(ValidationFailure failure, String? title,
+            String? description, bool? completed)?
+        invalid,
+    TResult Function(String? title, String? description, bool? completed)?
+        valid,
+    required TResult orElse(),
+  }) {
+    if (invalid != null) {
+      return invalid(failure, title, description, completed);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PureUpdateTodoDto value) pure,
+    required TResult Function(_InvalidUpdateTodoDto value) invalid,
+    required TResult Function(_ValidUpdateTodoDto value) valid,
+  }) {
+    return invalid(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PureUpdateTodoDto value)? pure,
+    TResult? Function(_InvalidUpdateTodoDto value)? invalid,
+    TResult? Function(_ValidUpdateTodoDto value)? valid,
+  }) {
+    return invalid?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PureUpdateTodoDto value)? pure,
+    TResult Function(_InvalidUpdateTodoDto value)? invalid,
+    TResult Function(_ValidUpdateTodoDto value)? valid,
+    required TResult orElse(),
+  }) {
+    if (invalid != null) {
+      return invalid(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_InvalidUpdateTodoDtoToJson(
+      this,
+    );
+  }
+}
+
+abstract class _InvalidUpdateTodoDto implements UpdateTodoDto {
+  const factory _InvalidUpdateTodoDto(final ValidationFailure failure,
+      {final String? title,
+      final String? description,
+      final bool? completed}) = _$_InvalidUpdateTodoDto;
+
+  ValidationFailure get failure;
+  @override
+  String? get title;
+  @override
+  String? get description;
+  @override
+  bool? get completed;
+}
+
+/// @nodoc
+@JsonSerializable(createFactory: false)
+class _$_ValidUpdateTodoDto implements _ValidUpdateTodoDto {
+  const _$_ValidUpdateTodoDto(
+      {this.title, this.description, this.completed, final String? $type})
+      : $type = $type ?? 'valid';
+
+  @override
+  final String? title;
+  @override
+  final String? description;
+  @override
+  final bool? completed;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ValidUpdateTodoDto &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.completed, completed) ||
+                other.completed == completed));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, title, description, completed);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String? title, String? description, bool? completed)
+        pure,
+    required TResult Function(ValidationFailure failure, String? title,
+            String? description, bool? completed)
+        invalid,
+    required TResult Function(
+            String? title, String? description, bool? completed)
+        valid,
+  }) {
+    return valid(title, description, completed);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? title, String? description, bool? completed)?
+        pure,
+    TResult? Function(ValidationFailure failure, String? title,
+            String? description, bool? completed)?
+        invalid,
+    TResult? Function(String? title, String? description, bool? completed)?
+        valid,
+  }) {
+    return valid?.call(title, description, completed);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? title, String? description, bool? completed)? pure,
+    TResult Function(ValidationFailure failure, String? title,
+            String? description, bool? completed)?
+        invalid,
+    TResult Function(String? title, String? description, bool? completed)?
+        valid,
+    required TResult orElse(),
+  }) {
+    if (valid != null) {
+      return valid(title, description, completed);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PureUpdateTodoDto value) pure,
+    required TResult Function(_InvalidUpdateTodoDto value) invalid,
+    required TResult Function(_ValidUpdateTodoDto value) valid,
+  }) {
+    return valid(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PureUpdateTodoDto value)? pure,
+    TResult? Function(_InvalidUpdateTodoDto value)? invalid,
+    TResult? Function(_ValidUpdateTodoDto value)? valid,
+  }) {
+    return valid?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PureUpdateTodoDto value)? pure,
+    TResult Function(_InvalidUpdateTodoDto value)? invalid,
+    TResult Function(_ValidUpdateTodoDto value)? valid,
+    required TResult orElse(),
+  }) {
+    if (valid != null) {
+      return valid(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ValidUpdateTodoDtoToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ValidUpdateTodoDto implements UpdateTodoDto {
+  const factory _ValidUpdateTodoDto(
+      {final String? title,
+      final String? description,
+      final bool? completed}) = _$_ValidUpdateTodoDto;
 
   @override
   String? get title;

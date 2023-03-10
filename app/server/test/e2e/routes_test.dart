@@ -19,7 +19,7 @@ const Map<String, String> _contentTypeJsonHeaders = {
 const _e2eTodoTitle = 'E2E|TODO|TITLE';
 const _e2eTodoDesc = 'E2E|TODO|DESC';
 
-const _createTodoDto = CreateTodoDto(
+const _createTodoDto = CreateTodoDto.valid(
   title: _e2eTodoTitle,
   description: _e2eTodoDesc,
 );
@@ -110,7 +110,7 @@ void main() {
     });
 
     test('PUT /todos/:id to update the created todo', () async {
-      const updateTodoDto = UpdateTodoDto(
+      const updateTodoDto = UpdateTodoDto.valid(
         title: 'updated title',
         description: 'updated description',
       );

@@ -5,6 +5,8 @@ import 'dart:convert';
 
 import 'package:typedefs/typedefs.dart';
 
+export 'package:typedefs/typedefs.dart' show ValidationErrors, Validator;
+
 class JsonBodyValidator {
   JsonBodyValidator(this._map);
   JsonBodyValidator.fromEncodedJson(String json)
