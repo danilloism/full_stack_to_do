@@ -7,7 +7,7 @@ import 'package:server/request_handlers/not_allowed_request_handler.dart';
 FutureOr<Response> onRequest(RequestContext context) {
   final controller = context.read<UserController>();
   if (context.request.method != HttpMethod.post) {
-    return notAllowedRequestHandler(context);
+    return notAllowedRequestHandler();
   }
   return controller.login(context.request);
 }
