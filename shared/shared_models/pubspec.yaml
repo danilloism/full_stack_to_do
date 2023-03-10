@@ -21,8 +21,7 @@ dependencies:
     path: ../../app/server/packages/failures
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.0
-  typedefs:
-    path: ../../app/server/packages/typedefs
-  uuid_type: ^2.0.0
+  shared_typedefs:
+    path: ../shared_typedefs
   validator:
-    path: ../../app/server/packages/validator
+    path: ../validator

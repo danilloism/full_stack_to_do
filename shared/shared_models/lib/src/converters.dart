@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:typedefs/typedefs.dart';
-import 'package:uuid_type/uuid_type.dart';
+import 'package:shared_typedefs/shared_typedefs.dart';
 
 class DateTimeConverter extends JsonConverter<DateTime, dynamic> {
   const DateTimeConverter();

@@ -1,4 +1,3 @@
-import 'package:either_dart/either.dart';
 import 'package:exceptions/exceptions.dart';
 import 'package:failures/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
