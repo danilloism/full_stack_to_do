@@ -1,4 +1,6 @@
-part of 'http_exception.dart';
+import 'dart:io';
+
+import 'package:exceptions/exceptions.dart';
 
 class BadRequestException extends HttpException {
   const BadRequestException({

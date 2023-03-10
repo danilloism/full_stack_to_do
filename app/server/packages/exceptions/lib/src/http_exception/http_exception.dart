@@ -1,7 +1,6 @@
-import 'dart:io';
-
-part 'not_found_exception.dart';
-part 'bad_request_exception.dart';
+export 'bad_request_exception.dart';
+export 'not_found_exception.dart';
+export 'unauthorized_exception.dart';
 
 abstract class HttpException implements Exception {
   const HttpException(this.message, this.statusCode);

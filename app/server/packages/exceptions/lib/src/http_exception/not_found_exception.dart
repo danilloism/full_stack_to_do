@@ -1,4 +1,6 @@
-part of 'http_exception.dart';
+import 'dart:io';
+
+import 'package:exceptions/exceptions.dart';
 
 class NotFoundException extends HttpException {
   const NotFoundException(String message) : super(message, HttpStatus.notFound);
