@@ -1,10 +1,12 @@
 // ignore_for_file: invalid_annotation_target
 
-import 'package:failures/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:models/src/converters.dart';
+import 'package:shared_models/src/converters.dart';
 import 'package:typedefs/typedefs.dart';
 import 'package:uuid_type/uuid_type.dart';
+
+export './dto/create_user_dto/create_user_dto.dart';
+export './dto/login_user_dto/login_user_dto.dart';
 
 part 'user.g.dart';
 part 'user.freezed.dart';
@@ -20,15 +22,4 @@ class User with _$User {
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
-}
-
-@freezed
-class AuthUser with _$AuthUser {
-  const AuthUser._();
-
-  const factory AuthUser.authenticated(User user) = AuthenticatedUser;
-
-  const factory AuthUser.unauthenticated() = UnauthenticatedUser;
-
-  const factory AuthUser.failure(Failure failure) = FailedAuthentication;
 }

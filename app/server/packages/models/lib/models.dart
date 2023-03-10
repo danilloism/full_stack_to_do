@@ -1,5 +1,4 @@
 /// A Very Good Project created by Very Good CLI.
 library models;
 
-export 'src/todo/todo.dart';
-export 'src/user/user.dart';
+export 'src/user.dart';

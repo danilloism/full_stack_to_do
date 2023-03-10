@@ -13,9 +13,17 @@ _$_UpdateTodoDto _$$_UpdateTodoDtoFromJson(Map<String, dynamic> json) =>
       completed: json['completed'] as bool?,
     );
 
-Map<String, dynamic> _$$_UpdateTodoDtoToJson(_$_UpdateTodoDto instance) =>
-    <String, dynamic>{
-      'title': instance.title,
-      'description': instance.description,
-      'completed': instance.completed,
-    };
+Map<String, dynamic> _$$_UpdateTodoDtoToJson(_$_UpdateTodoDto instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('title', instance.title);
+  writeNotNull('description', instance.description);
+  writeNotNull('completed', instance.completed);
+  return val;
+}

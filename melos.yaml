@@ -2,6 +2,7 @@ name: full_stack_todo
 packages:
   - app/*
   - app/server/packages/*
+  - shared/*
 
 scripts:
   server:dev:
