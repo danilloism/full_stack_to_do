@@ -1,7 +1,9 @@
 // ignore_for_file: flutter_style_todos
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:models/src/converters.dart';
 import 'package:typedefs/typedefs.dart';
+import 'package:uuid_type/uuid_type.dart';
 
 part 'todo.freezed.dart';
 part 'todo.g.dart';
@@ -12,6 +14,7 @@ class Todo with _$Todo {
   /// Todo model constructor
   const factory Todo({
     required TodoId id,
+    @UserIdConverter() required UserId userId,
     required String title,
     @_DateTimeConverter() required DateTime createdAt,
     @_DateTimeConverterNullable() DateTime? updatedAt,

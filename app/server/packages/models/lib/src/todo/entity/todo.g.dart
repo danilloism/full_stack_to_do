@@ -8,6 +8,7 @@ part of 'todo.dart';
 
 _$_Todo _$$_TodoFromJson(Map<String, dynamic> json) => _$_Todo(
       id: json['id'] as int,
+      userId: const UserIdConverter().fromJson(json['user_id']),
       title: json['title'] as String,
       createdAt: const _DateTimeConverter().fromJson(json['created_at']),
       updatedAt:
@@ -18,6 +19,7 @@ _$_Todo _$$_TodoFromJson(Map<String, dynamic> json) => _$_Todo(
 
 Map<String, dynamic> _$$_TodoToJson(_$_Todo instance) => <String, dynamic>{
       'id': instance.id,
+      'user_id': const UserIdConverter().toJson(instance.userId),
       'title': instance.title,
       'created_at': const _DateTimeConverter().toJson(instance.createdAt),
       'updated_at':

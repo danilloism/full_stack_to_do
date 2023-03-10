@@ -18,9 +18,10 @@ abstract class TodoDataSource {
 }
 
 class TodoDataSourceImpl implements TodoDataSource {
-  const TodoDataSourceImpl(this._dbConn);
+  const TodoDataSourceImpl(this._dbConn, this.user);
 
   final PgConnection _dbConn;
+  final User user;
 
   @override
   Future<Todo> create(CreateTodoDto todo) async {
@@ -29,14 +30,13 @@ class TodoDataSourceImpl implements TodoDataSource {
 
       final result = await _dbConn.query(
         '''
-        INSERT INTO todos(title, description, completed, created_at)
-        VALUES (@title, @description, @completed, @created_at) RETURNING *
+        INSERT INTO todos(title, description, user_id)
+        VALUES (@title, @description, @user_id)
+        RETURNING *
         ''',
         substitutionValues: {
-          'title': todo.title,
-          'description': todo.description,
-          'completed': false,
-          'created_at': DateTime.now(),
+          ...todo.toJson(),
+          'user_id': user.id.toString(),
         },
       );
 
@@ -128,10 +128,12 @@ class TodoDataSourceImpl implements TodoDataSource {
             completed = COALESCE(@new_completed, completed),
             updated_at = current_timestamp
         WHERE id = @id
+        AND user_id = @user_id
         RETURNING *
         ''',
         substitutionValues: {
           'id': id,
+          'user_id': user.id.toString(),
           'new_title': todo.title,
           'new_description': todo.description,
           'new_completed': todo.completed,

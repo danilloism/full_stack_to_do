@@ -21,6 +21,8 @@ Todo _$TodoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Todo {
   int get id => throw _privateConstructorUsedError;
+  @UserIdConverter()
+  Uuid get userId => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   @_DateTimeConverter()
   DateTime get createdAt => throw _privateConstructorUsedError;
@@ -41,6 +43,7 @@ abstract class $TodoCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
+      @UserIdConverter() Uuid userId,
       String title,
       @_DateTimeConverter() DateTime createdAt,
       @_DateTimeConverterNullable() DateTime? updatedAt,
@@ -62,6 +65,7 @@ class _$TodoCopyWithImpl<$Res, $Val extends Todo>
   @override
   $Res call({
     Object? id = null,
+    Object? userId = null,
     Object? title = null,
     Object? createdAt = null,
     Object? updatedAt = freezed,
@@ -73,6 +77,10 @@ class _$TodoCopyWithImpl<$Res, $Val extends Todo>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as Uuid,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -105,6 +113,7 @@ abstract class _$$_TodoCopyWith<$Res> implements $TodoCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
+      @UserIdConverter() Uuid userId,
       String title,
       @_DateTimeConverter() DateTime createdAt,
       @_DateTimeConverterNullable() DateTime? updatedAt,
@@ -122,6 +131,7 @@ class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res, _$_Todo>
   @override
   $Res call({
     Object? id = null,
+    Object? userId = null,
     Object? title = null,
     Object? createdAt = null,
     Object? updatedAt = freezed,
@@ -133,6 +143,10 @@ class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res, _$_Todo>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as Uuid,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -162,6 +176,7 @@ class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res, _$_Todo>
 class _$_Todo implements _Todo {
   const _$_Todo(
       {required this.id,
+      @UserIdConverter() required this.userId,
       required this.title,
       @_DateTimeConverter() required this.createdAt,
       @_DateTimeConverterNullable() this.updatedAt,
@@ -172,6 +187,9 @@ class _$_Todo implements _Todo {
 
   @override
   final int id;
+  @override
+  @UserIdConverter()
+  final Uuid userId;
   @override
   final String title;
   @override
@@ -188,7 +206,7 @@ class _$_Todo implements _Todo {
 
   @override
   String toString() {
-    return 'Todo(id: $id, title: $title, createdAt: $createdAt, updatedAt: $updatedAt, description: $description, completed: $completed)';
+    return 'Todo(id: $id, userId: $userId, title: $title, createdAt: $createdAt, updatedAt: $updatedAt, description: $description, completed: $completed)';
   }
 
   @override
@@ -197,6 +215,7 @@ class _$_Todo implements _Todo {
         (other.runtimeType == runtimeType &&
             other is _$_Todo &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -210,8 +229,8 @@ class _$_Todo implements _Todo {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, title, createdAt, updatedAt, description, completed);
+  int get hashCode => Object.hash(runtimeType, id, userId, title, createdAt,
+      updatedAt, description, completed);
 
   @JsonKey(ignore: true)
   @override
@@ -230,6 +249,7 @@ class _$_Todo implements _Todo {
 abstract class _Todo implements Todo {
   const factory _Todo(
       {required final int id,
+      @UserIdConverter() required final Uuid userId,
       required final String title,
       @_DateTimeConverter() required final DateTime createdAt,
       @_DateTimeConverterNullable() final DateTime? updatedAt,
@@ -240,6 +260,9 @@ abstract class _Todo implements Todo {
 
   @override
   int get id;
+  @override
+  @UserIdConverter()
+  Uuid get userId;
   @override
   String get title;
   @override
