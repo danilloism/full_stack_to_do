@@ -37,7 +37,7 @@ class UserRepositoryImpl implements UserRepository {
         dto.copyWith(
           password: hashedPassword,
         ),
-        inDifferenteConnection: true,
+        inDifferentConnection: true,
       );
       return Right(user);
     } on ServerException catch (e) {

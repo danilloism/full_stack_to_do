@@ -8,7 +8,7 @@ abstract class UserDataSource {
   Future<User> getById(UserId id, {bool inDifferenteConnection = false});
   Future<User> create(
     CreateUserDto user, {
-    bool inDifferenteConnection = false,
+    bool inDifferentConnection = false,
   });
   Future<User> getByEmail(String email, {bool inDifferenteConnection = false});
 }
@@ -21,9 +21,9 @@ class UserDataSourceImpl implements UserDataSource {
   @override
   Future<User> create(
     CreateUserDto user, {
-    bool inDifferenteConnection = false,
+    bool inDifferentConnection = false,
   }) async {
-    final conn = inDifferenteConnection ? _dbConn.copyConnection() : _dbConn;
+    final conn = inDifferentConnection ? _dbConn.copyConnection() : _dbConn;
     try {
       await conn.open();
 
