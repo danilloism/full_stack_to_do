@@ -12,5 +12,5 @@ dev_dependencies:
   very_good_analysis: ^4.0.0
 
 dependencies:
-  typedefs:
-    path: ../typedefs
+  shared_typedefs:
+    path: ../shared_typedefs

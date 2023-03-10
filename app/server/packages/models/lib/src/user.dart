@@ -1,9 +1,6 @@
-import 'package:either_dart/either.dart';
-import 'package:exceptions/exceptions.dart';
 import 'package:failures/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:shared_models/shared_models.dart';
-import 'package:validator/validator.dart';
 
 export 'package:shared_models/shared_models.dart';
 

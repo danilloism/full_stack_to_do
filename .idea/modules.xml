@@ -12,7 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/shared/shared_models/melos_shared_models.iml" filepath="$PROJECT_DIR$/shared/shared_models/melos_shared_models.iml" />
       <module fileurl="file://$PROJECT_DIR$/shared/shared_typedefs/melos_shared_typedefs.iml" filepath="$PROJECT_DIR$/shared/shared_typedefs/melos_shared_typedefs.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/server/packages/typedefs/melos_typedefs.iml" filepath="$PROJECT_DIR$/app/server/packages/typedefs/melos_typedefs.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/server/packages/validator/melos_validator.iml" filepath="$PROJECT_DIR$/app/server/packages/validator/melos_validator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shared/validator/melos_validator.iml" filepath="$PROJECT_DIR$/shared/validator/melos_validator.iml" />
       <module fileurl="file://$PROJECT_DIR$/melos_full_stack_todo.iml" filepath="$PROJECT_DIR$/melos_full_stack_todo.iml" />
     </modules>
   </component>

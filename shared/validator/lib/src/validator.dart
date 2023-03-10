@@ -1,11 +1,10 @@
-// ignore_for_file: avoid_returning_this, public_member_api_docs, avoid_escaping_inner_quotes
+// ignore_for_file: public_member_api_docs, avoid_escaping_inner_quotes
 
 import 'dart:collection';
 import 'dart:convert';
-
-import 'package:typedefs/typedefs.dart';
-
-export 'package:typedefs/typedefs.dart' show ValidationErrors, Validator;
+import 'package:shared_typedefs/shared_typedefs.dart';
+export 'package:shared_typedefs/shared_typedefs.dart'
+    show ValidationErrors, Validator;
 
 class JsonBodyValidator {
   JsonBodyValidator(this._map);
