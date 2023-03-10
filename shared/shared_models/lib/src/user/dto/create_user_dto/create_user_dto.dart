@@ -5,7 +5,7 @@ import 'package:validator/validator.dart';
 part 'create_user_dto.g.dart';
 part 'create_user_dto.freezed.dart';
 
-@Freezed(copyWith: true)
+@Freezed(fallbackUnion: 'pure')
 class CreateUserDto with _$CreateUserDto {
   const factory CreateUserDto.pure({
     required String email,
@@ -20,7 +20,7 @@ class CreateUserDto with _$CreateUserDto {
   }) = _ValidCreateUserDto;
 
   const factory CreateUserDto.invalid(
-    ValidationFailure failure, {
+    Failure failure, {
     @Default('') String email,
     @Default('') String name,
     @Default('') String password,

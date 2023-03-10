@@ -24,7 +24,7 @@ mixin _$UpdateTodoDto {
     required TResult Function(
             String? title, String? description, bool? completed)
         pure,
-    required TResult Function(ValidationFailure failure, String? title,
+    required TResult Function(Failure failure, String? title,
             String? description, bool? completed)
         invalid,
     required TResult Function(
@@ -36,8 +36,8 @@ mixin _$UpdateTodoDto {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? title, String? description, bool? completed)?
         pure,
-    TResult? Function(ValidationFailure failure, String? title,
-            String? description, bool? completed)?
+    TResult? Function(Failure failure, String? title, String? description,
+            bool? completed)?
         invalid,
     TResult? Function(String? title, String? description, bool? completed)?
         valid,
@@ -46,8 +46,8 @@ mixin _$UpdateTodoDto {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? title, String? description, bool? completed)? pure,
-    TResult Function(ValidationFailure failure, String? title,
-            String? description, bool? completed)?
+    TResult Function(Failure failure, String? title, String? description,
+            bool? completed)?
         invalid,
     TResult Function(String? title, String? description, bool? completed)?
         valid,
@@ -77,6 +77,95 @@ mixin _$UpdateTodoDto {
   }) =>
       throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $UpdateTodoDtoCopyWith<UpdateTodoDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UpdateTodoDtoCopyWith<$Res> {
+  factory $UpdateTodoDtoCopyWith(
+          UpdateTodoDto value, $Res Function(UpdateTodoDto) then) =
+      _$UpdateTodoDtoCopyWithImpl<$Res, UpdateTodoDto>;
+  @useResult
+  $Res call({String? title, String? description, bool? completed});
+}
+
+/// @nodoc
+class _$UpdateTodoDtoCopyWithImpl<$Res, $Val extends UpdateTodoDto>
+    implements $UpdateTodoDtoCopyWith<$Res> {
+  _$UpdateTodoDtoCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? title = freezed,
+    Object? description = freezed,
+    Object? completed = freezed,
+  }) {
+    return _then(_value.copyWith(
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      completed: freezed == completed
+          ? _value.completed
+          : completed // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_PureUpdateTodoDtoCopyWith<$Res>
+    implements $UpdateTodoDtoCopyWith<$Res> {
+  factory _$$_PureUpdateTodoDtoCopyWith(_$_PureUpdateTodoDto value,
+          $Res Function(_$_PureUpdateTodoDto) then) =
+      __$$_PureUpdateTodoDtoCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? title, String? description, bool? completed});
+}
+
+/// @nodoc
+class __$$_PureUpdateTodoDtoCopyWithImpl<$Res>
+    extends _$UpdateTodoDtoCopyWithImpl<$Res, _$_PureUpdateTodoDto>
+    implements _$$_PureUpdateTodoDtoCopyWith<$Res> {
+  __$$_PureUpdateTodoDtoCopyWithImpl(
+      _$_PureUpdateTodoDto _value, $Res Function(_$_PureUpdateTodoDto) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? title = freezed,
+    Object? description = freezed,
+    Object? completed = freezed,
+  }) {
+    return _then(_$_PureUpdateTodoDto(
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      completed: freezed == completed
+          ? _value.completed
+          : completed // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ));
+  }
 }
 
 /// @nodoc
@@ -112,13 +201,20 @@ class _$_PureUpdateTodoDto implements _PureUpdateTodoDto {
   @override
   int get hashCode => Object.hash(runtimeType, title, description, completed);
 
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PureUpdateTodoDtoCopyWith<_$_PureUpdateTodoDto> get copyWith =>
+      __$$_PureUpdateTodoDtoCopyWithImpl<_$_PureUpdateTodoDto>(
+          this, _$identity);
+
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
             String? title, String? description, bool? completed)
         pure,
-    required TResult Function(ValidationFailure failure, String? title,
+    required TResult Function(Failure failure, String? title,
             String? description, bool? completed)
         invalid,
     required TResult Function(
@@ -133,8 +229,8 @@ class _$_PureUpdateTodoDto implements _PureUpdateTodoDto {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? title, String? description, bool? completed)?
         pure,
-    TResult? Function(ValidationFailure failure, String? title,
-            String? description, bool? completed)?
+    TResult? Function(Failure failure, String? title, String? description,
+            bool? completed)?
         invalid,
     TResult? Function(String? title, String? description, bool? completed)?
         valid,
@@ -146,8 +242,8 @@ class _$_PureUpdateTodoDto implements _PureUpdateTodoDto {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? title, String? description, bool? completed)? pure,
-    TResult Function(ValidationFailure failure, String? title,
-            String? description, bool? completed)?
+    TResult Function(Failure failure, String? title, String? description,
+            bool? completed)?
         invalid,
     TResult Function(String? title, String? description, bool? completed)?
         valid,
@@ -213,6 +309,59 @@ abstract class _PureUpdateTodoDto implements UpdateTodoDto {
   String? get description;
   @override
   bool? get completed;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PureUpdateTodoDtoCopyWith<_$_PureUpdateTodoDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_InvalidUpdateTodoDtoCopyWith<$Res>
+    implements $UpdateTodoDtoCopyWith<$Res> {
+  factory _$$_InvalidUpdateTodoDtoCopyWith(_$_InvalidUpdateTodoDto value,
+          $Res Function(_$_InvalidUpdateTodoDto) then) =
+      __$$_InvalidUpdateTodoDtoCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Failure failure, String? title, String? description, bool? completed});
+}
+
+/// @nodoc
+class __$$_InvalidUpdateTodoDtoCopyWithImpl<$Res>
+    extends _$UpdateTodoDtoCopyWithImpl<$Res, _$_InvalidUpdateTodoDto>
+    implements _$$_InvalidUpdateTodoDtoCopyWith<$Res> {
+  __$$_InvalidUpdateTodoDtoCopyWithImpl(_$_InvalidUpdateTodoDto _value,
+      $Res Function(_$_InvalidUpdateTodoDto) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failure = null,
+    Object? title = freezed,
+    Object? description = freezed,
+    Object? completed = freezed,
+  }) {
+    return _then(_$_InvalidUpdateTodoDto(
+      null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      completed: freezed == completed
+          ? _value.completed
+          : completed // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ));
+  }
 }
 
 /// @nodoc
@@ -226,7 +375,7 @@ class _$_InvalidUpdateTodoDto implements _InvalidUpdateTodoDto {
       : $type = $type ?? 'invalid';
 
   @override
-  final ValidationFailure failure;
+  final Failure failure;
   @override
   @JsonKey()
   final String? title;
@@ -258,13 +407,20 @@ class _$_InvalidUpdateTodoDto implements _InvalidUpdateTodoDto {
   int get hashCode =>
       Object.hash(runtimeType, failure, title, description, completed);
 
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_InvalidUpdateTodoDtoCopyWith<_$_InvalidUpdateTodoDto> get copyWith =>
+      __$$_InvalidUpdateTodoDtoCopyWithImpl<_$_InvalidUpdateTodoDto>(
+          this, _$identity);
+
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
             String? title, String? description, bool? completed)
         pure,
-    required TResult Function(ValidationFailure failure, String? title,
+    required TResult Function(Failure failure, String? title,
             String? description, bool? completed)
         invalid,
     required TResult Function(
@@ -279,8 +435,8 @@ class _$_InvalidUpdateTodoDto implements _InvalidUpdateTodoDto {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? title, String? description, bool? completed)?
         pure,
-    TResult? Function(ValidationFailure failure, String? title,
-            String? description, bool? completed)?
+    TResult? Function(Failure failure, String? title, String? description,
+            bool? completed)?
         invalid,
     TResult? Function(String? title, String? description, bool? completed)?
         valid,
@@ -292,8 +448,8 @@ class _$_InvalidUpdateTodoDto implements _InvalidUpdateTodoDto {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? title, String? description, bool? completed)? pure,
-    TResult Function(ValidationFailure failure, String? title,
-            String? description, bool? completed)?
+    TResult Function(Failure failure, String? title, String? description,
+            bool? completed)?
         invalid,
     TResult Function(String? title, String? description, bool? completed)?
         valid,
@@ -348,18 +504,65 @@ class _$_InvalidUpdateTodoDto implements _InvalidUpdateTodoDto {
 }
 
 abstract class _InvalidUpdateTodoDto implements UpdateTodoDto {
-  const factory _InvalidUpdateTodoDto(final ValidationFailure failure,
+  const factory _InvalidUpdateTodoDto(final Failure failure,
       {final String? title,
       final String? description,
       final bool? completed}) = _$_InvalidUpdateTodoDto;
 
-  ValidationFailure get failure;
+  Failure get failure;
   @override
   String? get title;
   @override
   String? get description;
   @override
   bool? get completed;
+  @override
+  @JsonKey(ignore: true)
+  _$$_InvalidUpdateTodoDtoCopyWith<_$_InvalidUpdateTodoDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ValidUpdateTodoDtoCopyWith<$Res>
+    implements $UpdateTodoDtoCopyWith<$Res> {
+  factory _$$_ValidUpdateTodoDtoCopyWith(_$_ValidUpdateTodoDto value,
+          $Res Function(_$_ValidUpdateTodoDto) then) =
+      __$$_ValidUpdateTodoDtoCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? title, String? description, bool? completed});
+}
+
+/// @nodoc
+class __$$_ValidUpdateTodoDtoCopyWithImpl<$Res>
+    extends _$UpdateTodoDtoCopyWithImpl<$Res, _$_ValidUpdateTodoDto>
+    implements _$$_ValidUpdateTodoDtoCopyWith<$Res> {
+  __$$_ValidUpdateTodoDtoCopyWithImpl(
+      _$_ValidUpdateTodoDto _value, $Res Function(_$_ValidUpdateTodoDto) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? title = freezed,
+    Object? description = freezed,
+    Object? completed = freezed,
+  }) {
+    return _then(_$_ValidUpdateTodoDto(
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      completed: freezed == completed
+          ? _value.completed
+          : completed // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ));
+  }
 }
 
 /// @nodoc
@@ -395,13 +598,20 @@ class _$_ValidUpdateTodoDto implements _ValidUpdateTodoDto {
   @override
   int get hashCode => Object.hash(runtimeType, title, description, completed);
 
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ValidUpdateTodoDtoCopyWith<_$_ValidUpdateTodoDto> get copyWith =>
+      __$$_ValidUpdateTodoDtoCopyWithImpl<_$_ValidUpdateTodoDto>(
+          this, _$identity);
+
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
             String? title, String? description, bool? completed)
         pure,
-    required TResult Function(ValidationFailure failure, String? title,
+    required TResult Function(Failure failure, String? title,
             String? description, bool? completed)
         invalid,
     required TResult Function(
@@ -416,8 +626,8 @@ class _$_ValidUpdateTodoDto implements _ValidUpdateTodoDto {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? title, String? description, bool? completed)?
         pure,
-    TResult? Function(ValidationFailure failure, String? title,
-            String? description, bool? completed)?
+    TResult? Function(Failure failure, String? title, String? description,
+            bool? completed)?
         invalid,
     TResult? Function(String? title, String? description, bool? completed)?
         valid,
@@ -429,8 +639,8 @@ class _$_ValidUpdateTodoDto implements _ValidUpdateTodoDto {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? title, String? description, bool? completed)? pure,
-    TResult Function(ValidationFailure failure, String? title,
-            String? description, bool? completed)?
+    TResult Function(Failure failure, String? title, String? description,
+            bool? completed)?
         invalid,
     TResult Function(String? title, String? description, bool? completed)?
         valid,
@@ -496,4 +706,8 @@ abstract class _ValidUpdateTodoDto implements UpdateTodoDto {
   String? get description;
   @override
   bool? get completed;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ValidUpdateTodoDtoCopyWith<_$_ValidUpdateTodoDto> get copyWith =>
+      throw _privateConstructorUsedError;
 }

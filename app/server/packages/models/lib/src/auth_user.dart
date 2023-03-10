@@ -2,11 +2,9 @@ import 'package:failures/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:shared_models/shared_models.dart';
 
-export 'package:shared_models/shared_models.dart';
+part 'auth_user.freezed.dart';
 
-part 'user.freezed.dart';
-
-@Freezed(copyWith: false, toStringOverride: false)
+@freezed
 class AuthUser with _$AuthUser {
   const AuthUser._();
 

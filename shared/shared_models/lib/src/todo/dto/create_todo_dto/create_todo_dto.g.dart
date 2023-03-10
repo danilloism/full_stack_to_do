@@ -6,7 +6,7 @@ part of 'create_todo_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Map<String, dynamic> _$$PureCreateTodoDtoToJson(_$PureCreateTodoDto instance) {
+Map<String, dynamic> _$$_CreateTodoDtoToJson(_$_CreateTodoDto instance) {
   final val = <String, dynamic>{
     'title': instance.title,
   };
@@ -22,8 +22,8 @@ Map<String, dynamic> _$$PureCreateTodoDtoToJson(_$PureCreateTodoDto instance) {
   return val;
 }
 
-Map<String, dynamic> _$$ValidCreateTodoDtoToJson(
-    _$ValidCreateTodoDto instance) {
+Map<String, dynamic> _$$_ValidCreateTodoDtoToJson(
+    _$_ValidCreateTodoDto instance) {
   final val = <String, dynamic>{
     'title': instance.title,
   };
@@ -39,8 +39,8 @@ Map<String, dynamic> _$$ValidCreateTodoDtoToJson(
   return val;
 }
 
-Map<String, dynamic> _$$InvalidCreateTodoDtoToJson(
-    _$InvalidCreateTodoDto instance) {
+Map<String, dynamic> _$$_InvalidCreateTodoDtoToJson(
+    _$_InvalidCreateTodoDto instance) {
   final val = <String, dynamic>{
     'failure': instance.failure.toJson(),
     'title': instance.title,

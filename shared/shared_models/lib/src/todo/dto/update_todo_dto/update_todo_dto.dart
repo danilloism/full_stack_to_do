@@ -1,4 +1,3 @@
-import 'package:exceptions/exceptions.dart';
 import 'package:failures/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:validator/validator.dart';
@@ -6,12 +5,7 @@ import 'package:validator/validator.dart';
 part 'update_todo_dto.freezed.dart';
 part 'update_todo_dto.g.dart';
 
-@Freezed(
-  copyWith: false,
-  toStringOverride: false,
-  fromJson: false,
-  toJson: true,
-)
+@Freezed(fallbackUnion: 'pure')
 class UpdateTodoDto with _$UpdateTodoDto {
   const factory UpdateTodoDto.pure({
     String? title,
@@ -20,7 +14,7 @@ class UpdateTodoDto with _$UpdateTodoDto {
   }) = _PureUpdateTodoDto;
 
   const factory UpdateTodoDto.invalid(
-    ValidationFailure failure, {
+    Failure failure, {
     @Default(null) String? title,
     @Default(null) String? description,
     @Default(null) bool? completed,
@@ -50,32 +44,17 @@ class UpdateTodoDto with _$UpdateTodoDto {
       )
       ..addTypeValidation<bool>('completed');
 
-    try {
-      const failureMessage = 'Validation failed';
-
-      if (validator.isValid) {
-        try {
-          return UpdateTodoDto.valid(
-            title: json['title'] as String?,
-            completed: json['completed'] as bool?,
-            description: json['description'] as String?,
-          );
-        } catch (e) {
-          throw const ValidationException(
-            failureMessage,
-            {
-              'body': ['invalid body'],
-            },
-          );
-        }
-      } else {
-        throw ValidationException(failureMessage, validator.errors);
-      }
-    } on ValidationException catch (e) {
+    if (validator.isValid) {
+      return UpdateTodoDto.valid(
+        title: json['title'] as String?,
+        completed: json['completed'] as bool?,
+        description: json['description'] as String?,
+      );
+    } else {
       return UpdateTodoDto.invalid(
         ValidationFailure(
-          message: e.message,
-          errors: e.errors,
+          message: 'Validation failed',
+          errors: validator.errors,
         ),
       );
     }

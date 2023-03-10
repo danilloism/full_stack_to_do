@@ -24,7 +24,6 @@ mixin _$User {
   Uuid get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  @DateTimeConverter()
   DateTime get createdAt => throw _privateConstructorUsedError;
   @JsonKey(includeToJson: false)
   String get password => throw _privateConstructorUsedError;
@@ -43,7 +42,7 @@ abstract class $UserCopyWith<$Res> {
       {@UserIdConverter() Uuid id,
       String email,
       String name,
-      @DateTimeConverter() DateTime createdAt,
+      DateTime createdAt,
       @JsonKey(includeToJson: false) String password});
 }
 
@@ -101,7 +100,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       {@UserIdConverter() Uuid id,
       String email,
       String name,
-      @DateTimeConverter() DateTime createdAt,
+      DateTime createdAt,
       @JsonKey(includeToJson: false) String password});
 }
 
@@ -152,7 +151,7 @@ class _$_User implements _User {
       {@UserIdConverter() required this.id,
       required this.email,
       required this.name,
-      @DateTimeConverter() required this.createdAt,
+      required this.createdAt,
       @JsonKey(includeToJson: false) this.password = ''});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
@@ -165,7 +164,6 @@ class _$_User implements _User {
   @override
   final String name;
   @override
-  @DateTimeConverter()
   final DateTime createdAt;
   @override
   @JsonKey(includeToJson: false)
@@ -209,7 +207,7 @@ abstract class _User implements User {
       {@UserIdConverter() required final Uuid id,
       required final String email,
       required final String name,
-      @DateTimeConverter() required final DateTime createdAt,
+      required final DateTime createdAt,
       @JsonKey(includeToJson: false) final String password}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
@@ -222,7 +220,6 @@ abstract class _User implements User {
   @override
   String get name;
   @override
-  @DateTimeConverter()
   DateTime get createdAt;
   @override
   @JsonKey(includeToJson: false)

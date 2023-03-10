@@ -22,8 +22,7 @@ mixin _$LoginUserDto {
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String password) pure,
     required TResult Function(String email, String password) valid,
-    required TResult Function(
-            ValidationFailure failure, String email, String password)
+    required TResult Function(Failure failure, String email, String password)
         invalid,
   }) =>
       throw _privateConstructorUsedError;
@@ -31,16 +30,14 @@ mixin _$LoginUserDto {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email, String password)? pure,
     TResult? Function(String email, String password)? valid,
-    TResult? Function(ValidationFailure failure, String email, String password)?
-        invalid,
+    TResult? Function(Failure failure, String email, String password)? invalid,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password)? pure,
     TResult Function(String email, String password)? valid,
-    TResult Function(ValidationFailure failure, String email, String password)?
-        invalid,
+    TResult Function(Failure failure, String email, String password)? invalid,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -67,6 +64,85 @@ mixin _$LoginUserDto {
   }) =>
       throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LoginUserDtoCopyWith<LoginUserDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LoginUserDtoCopyWith<$Res> {
+  factory $LoginUserDtoCopyWith(
+          LoginUserDto value, $Res Function(LoginUserDto) then) =
+      _$LoginUserDtoCopyWithImpl<$Res, LoginUserDto>;
+  @useResult
+  $Res call({String email, String password});
+}
+
+/// @nodoc
+class _$LoginUserDtoCopyWithImpl<$Res, $Val extends LoginUserDto>
+    implements $LoginUserDtoCopyWith<$Res> {
+  _$LoginUserDtoCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+  }) {
+    return _then(_value.copyWith(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_LoginUserDtoCopyWith<$Res>
+    implements $LoginUserDtoCopyWith<$Res> {
+  factory _$$_LoginUserDtoCopyWith(
+          _$_LoginUserDto value, $Res Function(_$_LoginUserDto) then) =
+      __$$_LoginUserDtoCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String email, String password});
+}
+
+/// @nodoc
+class __$$_LoginUserDtoCopyWithImpl<$Res>
+    extends _$LoginUserDtoCopyWithImpl<$Res, _$_LoginUserDto>
+    implements _$$_LoginUserDtoCopyWith<$Res> {
+  __$$_LoginUserDtoCopyWithImpl(
+      _$_LoginUserDto _value, $Res Function(_$_LoginUserDto) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+  }) {
+    return _then(_$_LoginUserDto(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
@@ -98,13 +174,18 @@ class _$_LoginUserDto implements _LoginUserDto {
   @override
   int get hashCode => Object.hash(runtimeType, email, password);
 
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LoginUserDtoCopyWith<_$_LoginUserDto> get copyWith =>
+      __$$_LoginUserDtoCopyWithImpl<_$_LoginUserDto>(this, _$identity);
+
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String password) pure,
     required TResult Function(String email, String password) valid,
-    required TResult Function(
-            ValidationFailure failure, String email, String password)
+    required TResult Function(Failure failure, String email, String password)
         invalid,
   }) {
     return pure(email, password);
@@ -115,8 +196,7 @@ class _$_LoginUserDto implements _LoginUserDto {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email, String password)? pure,
     TResult? Function(String email, String password)? valid,
-    TResult? Function(ValidationFailure failure, String email, String password)?
-        invalid,
+    TResult? Function(Failure failure, String email, String password)? invalid,
   }) {
     return pure?.call(email, password);
   }
@@ -126,8 +206,7 @@ class _$_LoginUserDto implements _LoginUserDto {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password)? pure,
     TResult Function(String email, String password)? valid,
-    TResult Function(ValidationFailure failure, String email, String password)?
-        invalid,
+    TResult Function(Failure failure, String email, String password)? invalid,
     required TResult orElse(),
   }) {
     if (pure != null) {
@@ -187,6 +266,48 @@ abstract class _LoginUserDto implements LoginUserDto {
   String get email;
   @override
   String get password;
+  @override
+  @JsonKey(ignore: true)
+  _$$_LoginUserDtoCopyWith<_$_LoginUserDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ValidLoginUserDtoCopyWith<$Res>
+    implements $LoginUserDtoCopyWith<$Res> {
+  factory _$$_ValidLoginUserDtoCopyWith(_$_ValidLoginUserDto value,
+          $Res Function(_$_ValidLoginUserDto) then) =
+      __$$_ValidLoginUserDtoCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String email, String password});
+}
+
+/// @nodoc
+class __$$_ValidLoginUserDtoCopyWithImpl<$Res>
+    extends _$LoginUserDtoCopyWithImpl<$Res, _$_ValidLoginUserDto>
+    implements _$$_ValidLoginUserDtoCopyWith<$Res> {
+  __$$_ValidLoginUserDtoCopyWithImpl(
+      _$_ValidLoginUserDto _value, $Res Function(_$_ValidLoginUserDto) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+  }) {
+    return _then(_$_ValidLoginUserDto(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
@@ -218,13 +339,19 @@ class _$_ValidLoginUserDto implements _ValidLoginUserDto {
   @override
   int get hashCode => Object.hash(runtimeType, email, password);
 
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ValidLoginUserDtoCopyWith<_$_ValidLoginUserDto> get copyWith =>
+      __$$_ValidLoginUserDtoCopyWithImpl<_$_ValidLoginUserDto>(
+          this, _$identity);
+
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String password) pure,
     required TResult Function(String email, String password) valid,
-    required TResult Function(
-            ValidationFailure failure, String email, String password)
+    required TResult Function(Failure failure, String email, String password)
         invalid,
   }) {
     return valid(email, password);
@@ -235,8 +362,7 @@ class _$_ValidLoginUserDto implements _ValidLoginUserDto {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email, String password)? pure,
     TResult? Function(String email, String password)? valid,
-    TResult? Function(ValidationFailure failure, String email, String password)?
-        invalid,
+    TResult? Function(Failure failure, String email, String password)? invalid,
   }) {
     return valid?.call(email, password);
   }
@@ -246,8 +372,7 @@ class _$_ValidLoginUserDto implements _ValidLoginUserDto {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password)? pure,
     TResult Function(String email, String password)? valid,
-    TResult Function(ValidationFailure failure, String email, String password)?
-        invalid,
+    TResult Function(Failure failure, String email, String password)? invalid,
     required TResult orElse(),
   }) {
     if (valid != null) {
@@ -307,6 +432,53 @@ abstract class _ValidLoginUserDto implements LoginUserDto {
   String get email;
   @override
   String get password;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ValidLoginUserDtoCopyWith<_$_ValidLoginUserDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_InvalidLoginUserDtoCopyWith<$Res>
+    implements $LoginUserDtoCopyWith<$Res> {
+  factory _$$_InvalidLoginUserDtoCopyWith(_$_InvalidLoginUserDto value,
+          $Res Function(_$_InvalidLoginUserDto) then) =
+      __$$_InvalidLoginUserDtoCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Failure failure, String email, String password});
+}
+
+/// @nodoc
+class __$$_InvalidLoginUserDtoCopyWithImpl<$Res>
+    extends _$LoginUserDtoCopyWithImpl<$Res, _$_InvalidLoginUserDto>
+    implements _$$_InvalidLoginUserDtoCopyWith<$Res> {
+  __$$_InvalidLoginUserDtoCopyWithImpl(_$_InvalidLoginUserDto _value,
+      $Res Function(_$_InvalidLoginUserDto) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failure = null,
+    Object? email = null,
+    Object? password = null,
+  }) {
+    return _then(_$_InvalidLoginUserDto(
+      null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
@@ -317,7 +489,7 @@ class _$_InvalidLoginUserDto implements _InvalidLoginUserDto {
       : $type = $type ?? 'invalid';
 
   @override
-  final ValidationFailure failure;
+  final Failure failure;
   @override
   @JsonKey()
   final String email;
@@ -343,13 +515,19 @@ class _$_InvalidLoginUserDto implements _InvalidLoginUserDto {
   @override
   int get hashCode => Object.hash(runtimeType, failure, email, password);
 
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_InvalidLoginUserDtoCopyWith<_$_InvalidLoginUserDto> get copyWith =>
+      __$$_InvalidLoginUserDtoCopyWithImpl<_$_InvalidLoginUserDto>(
+          this, _$identity);
+
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String password) pure,
     required TResult Function(String email, String password) valid,
-    required TResult Function(
-            ValidationFailure failure, String email, String password)
+    required TResult Function(Failure failure, String email, String password)
         invalid,
   }) {
     return invalid(failure, email, password);
@@ -360,8 +538,7 @@ class _$_InvalidLoginUserDto implements _InvalidLoginUserDto {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email, String password)? pure,
     TResult? Function(String email, String password)? valid,
-    TResult? Function(ValidationFailure failure, String email, String password)?
-        invalid,
+    TResult? Function(Failure failure, String email, String password)? invalid,
   }) {
     return invalid?.call(failure, email, password);
   }
@@ -371,8 +548,7 @@ class _$_InvalidLoginUserDto implements _InvalidLoginUserDto {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password)? pure,
     TResult Function(String email, String password)? valid,
-    TResult Function(ValidationFailure failure, String email, String password)?
-        invalid,
+    TResult Function(Failure failure, String email, String password)? invalid,
     required TResult orElse(),
   }) {
     if (invalid != null) {
@@ -424,12 +600,16 @@ class _$_InvalidLoginUserDto implements _InvalidLoginUserDto {
 }
 
 abstract class _InvalidLoginUserDto implements LoginUserDto {
-  const factory _InvalidLoginUserDto(final ValidationFailure failure,
+  const factory _InvalidLoginUserDto(final Failure failure,
       {final String email, final String password}) = _$_InvalidLoginUserDto;
 
-  ValidationFailure get failure;
+  Failure get failure;
   @override
   String get email;
   @override
   String get password;
+  @override
+  @JsonKey(ignore: true)
+  _$$_InvalidLoginUserDtoCopyWith<_$_InvalidLoginUserDto> get copyWith =>
+      throw _privateConstructorUsedError;
 }

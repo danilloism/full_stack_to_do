@@ -16,7 +16,7 @@ class User with _$User {
     @UserIdConverter() required UserId id,
     required String email,
     required String name,
-    @DateTimeConverter() required DateTime createdAt,
+    required DateTime createdAt,
     @Default('') @JsonKey(includeToJson: false) String password,
   }) = _User;
 

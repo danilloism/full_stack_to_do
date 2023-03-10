@@ -23,8 +23,8 @@ mixin _$CreateUserDto {
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String name, String password) pure,
     required TResult Function(String email, String name, String password) valid,
-    required TResult Function(ValidationFailure failure, String email,
-            String name, String password)
+    required TResult Function(
+            Failure failure, String email, String name, String password)
         invalid,
   }) =>
       throw _privateConstructorUsedError;
@@ -32,8 +32,8 @@ mixin _$CreateUserDto {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email, String name, String password)? pure,
     TResult? Function(String email, String name, String password)? valid,
-    TResult? Function(ValidationFailure failure, String email, String name,
-            String password)?
+    TResult? Function(
+            Failure failure, String email, String name, String password)?
         invalid,
   }) =>
       throw _privateConstructorUsedError;
@@ -41,8 +41,8 @@ mixin _$CreateUserDto {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String name, String password)? pure,
     TResult Function(String email, String name, String password)? valid,
-    TResult Function(ValidationFailure failure, String email, String name,
-            String password)?
+    TResult Function(
+            Failure failure, String email, String name, String password)?
         invalid,
     required TResult orElse(),
   }) =>
@@ -207,8 +207,8 @@ class _$_CreateUserDto implements _CreateUserDto {
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String name, String password) pure,
     required TResult Function(String email, String name, String password) valid,
-    required TResult Function(ValidationFailure failure, String email,
-            String name, String password)
+    required TResult Function(
+            Failure failure, String email, String name, String password)
         invalid,
   }) {
     return pure(email, name, password);
@@ -219,8 +219,8 @@ class _$_CreateUserDto implements _CreateUserDto {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email, String name, String password)? pure,
     TResult? Function(String email, String name, String password)? valid,
-    TResult? Function(ValidationFailure failure, String email, String name,
-            String password)?
+    TResult? Function(
+            Failure failure, String email, String name, String password)?
         invalid,
   }) {
     return pure?.call(email, name, password);
@@ -231,8 +231,8 @@ class _$_CreateUserDto implements _CreateUserDto {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String name, String password)? pure,
     TResult Function(String email, String name, String password)? valid,
-    TResult Function(ValidationFailure failure, String email, String name,
-            String password)?
+    TResult Function(
+            Failure failure, String email, String name, String password)?
         invalid,
     required TResult orElse(),
   }) {
@@ -392,8 +392,8 @@ class _$_ValidCreateUserDto implements _ValidCreateUserDto {
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String name, String password) pure,
     required TResult Function(String email, String name, String password) valid,
-    required TResult Function(ValidationFailure failure, String email,
-            String name, String password)
+    required TResult Function(
+            Failure failure, String email, String name, String password)
         invalid,
   }) {
     return valid(email, name, password);
@@ -404,8 +404,8 @@ class _$_ValidCreateUserDto implements _ValidCreateUserDto {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email, String name, String password)? pure,
     TResult? Function(String email, String name, String password)? valid,
-    TResult? Function(ValidationFailure failure, String email, String name,
-            String password)?
+    TResult? Function(
+            Failure failure, String email, String name, String password)?
         invalid,
   }) {
     return valid?.call(email, name, password);
@@ -416,8 +416,8 @@ class _$_ValidCreateUserDto implements _ValidCreateUserDto {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String name, String password)? pure,
     TResult Function(String email, String name, String password)? valid,
-    TResult Function(ValidationFailure failure, String email, String name,
-            String password)?
+    TResult Function(
+            Failure failure, String email, String name, String password)?
         invalid,
     required TResult orElse(),
   }) {
@@ -495,10 +495,7 @@ abstract class _$$_InvalidCreateUserDtoCopyWith<$Res>
       __$$_InvalidCreateUserDtoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {ValidationFailure failure, String email, String name, String password});
-
-  $ValidationFailureCopyWith<$Res> get failure;
+  $Res call({Failure failure, String email, String name, String password});
 }
 
 /// @nodoc
@@ -521,7 +518,7 @@ class __$$_InvalidCreateUserDtoCopyWithImpl<$Res>
       null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
-              as ValidationFailure,
+              as Failure,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -536,14 +533,6 @@ class __$$_InvalidCreateUserDtoCopyWithImpl<$Res>
               as String,
     ));
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ValidationFailureCopyWith<$Res> get failure {
-    return $ValidationFailureCopyWith<$Res>(_value.failure, (value) {
-      return _then(_value.copyWith(failure: value));
-    });
-  }
 }
 
 /// @nodoc
@@ -557,7 +546,7 @@ class _$_InvalidCreateUserDto implements _InvalidCreateUserDto {
       : $type = $type ?? 'invalid';
 
   @override
-  final ValidationFailure failure;
+  final Failure failure;
   @override
   @JsonKey()
   final String email;
@@ -599,8 +588,8 @@ class _$_InvalidCreateUserDto implements _InvalidCreateUserDto {
   TResult when<TResult extends Object?>({
     required TResult Function(String email, String name, String password) pure,
     required TResult Function(String email, String name, String password) valid,
-    required TResult Function(ValidationFailure failure, String email,
-            String name, String password)
+    required TResult Function(
+            Failure failure, String email, String name, String password)
         invalid,
   }) {
     return invalid(failure, email, name, password);
@@ -611,8 +600,8 @@ class _$_InvalidCreateUserDto implements _InvalidCreateUserDto {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email, String name, String password)? pure,
     TResult? Function(String email, String name, String password)? valid,
-    TResult? Function(ValidationFailure failure, String email, String name,
-            String password)?
+    TResult? Function(
+            Failure failure, String email, String name, String password)?
         invalid,
   }) {
     return invalid?.call(failure, email, name, password);
@@ -623,8 +612,8 @@ class _$_InvalidCreateUserDto implements _InvalidCreateUserDto {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String name, String password)? pure,
     TResult Function(String email, String name, String password)? valid,
-    TResult Function(ValidationFailure failure, String email, String name,
-            String password)?
+    TResult Function(
+            Failure failure, String email, String name, String password)?
         invalid,
     required TResult orElse(),
   }) {
@@ -677,12 +666,12 @@ class _$_InvalidCreateUserDto implements _InvalidCreateUserDto {
 }
 
 abstract class _InvalidCreateUserDto implements CreateUserDto {
-  const factory _InvalidCreateUserDto(final ValidationFailure failure,
+  const factory _InvalidCreateUserDto(final Failure failure,
       {final String email,
       final String name,
       final String password}) = _$_InvalidCreateUserDto;
 
-  ValidationFailure get failure;
+  Failure get failure;
   @override
   String get email;
   @override

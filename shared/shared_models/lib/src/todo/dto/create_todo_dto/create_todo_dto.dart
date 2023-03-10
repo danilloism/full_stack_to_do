@@ -1,4 +1,3 @@
-import 'package:exceptions/exceptions.dart';
 import 'package:failures/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:validator/validator.dart';
@@ -6,23 +5,23 @@ import 'package:validator/validator.dart';
 part 'create_todo_dto.g.dart';
 part 'create_todo_dto.freezed.dart';
 
-@Freezed(copyWith: false, toStringOverride: false)
+@Freezed(fallbackUnion: 'pure')
 class CreateTodoDto with _$CreateTodoDto {
   const factory CreateTodoDto.pure({
     required String title,
     String? description,
-  }) = PureCreateTodoDto;
+  }) = _CreateTodoDto;
 
   const factory CreateTodoDto.valid({
     required String title,
     String? description,
-  }) = ValidCreateTodoDto;
+  }) = _ValidCreateTodoDto;
 
   const factory CreateTodoDto.invalid(
-    ValidationFailure failure, {
+    Failure failure, {
     @Default('') String title,
     @Default(null) String? description,
-  }) = InvalidCreateTodoDto;
+  }) = _InvalidCreateTodoDto;
 
   factory CreateTodoDto.fromJson(Map<String, dynamic> json) {
     final validator = JsonBodyValidator(json)
@@ -37,34 +36,16 @@ class CreateTodoDto with _$CreateTodoDto {
         notEmpty: true,
       );
 
-    try {
-      const failureMessage = 'Validation failed';
-
-      if (validator.isValid) {
-        try {
-          return CreateTodoDto.valid(
-            title: json['title'] as String,
-            description: json['description'] as String?,
-          );
-        } catch (e) {
-          throw const ValidationException(
-            failureMessage,
-            {
-              'body': ['invalid body'],
-            },
-          );
-        }
-      } else {
-        throw ValidationException(failureMessage, validator.errors);
-      }
-    } on ValidationException catch (e) {
-      // return Left(
-
-      // );
+    if (validator.isValid) {
+      return CreateTodoDto.valid(
+        title: json['title'] as String,
+        description: json['description'] as String?,
+      );
+    } else {
       return CreateTodoDto.invalid(
         ValidationFailure(
-          message: e.message,
-          errors: e.errors,
+          message: 'Validation failed',
+          errors: validator.errors,
         ),
       );
     }

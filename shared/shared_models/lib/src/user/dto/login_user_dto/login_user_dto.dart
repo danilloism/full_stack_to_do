@@ -5,7 +5,7 @@ import 'package:validator/validator.dart';
 part 'login_user_dto.g.dart';
 part 'login_user_dto.freezed.dart';
 
-@Freezed(copyWith: false)
+@Freezed(fallbackUnion: 'pure')
 class LoginUserDto with _$LoginUserDto {
   const factory LoginUserDto.pure({
     required String email,
@@ -18,7 +18,7 @@ class LoginUserDto with _$LoginUserDto {
   }) = _ValidLoginUserDto;
 
   const factory LoginUserDto.invalid(
-    ValidationFailure failure, {
+    Failure failure, {
     @Default('') String email,
     @Default('') String password,
   }) = _InvalidLoginUserDto;

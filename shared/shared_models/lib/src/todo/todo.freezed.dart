@@ -24,9 +24,7 @@ mixin _$Todo {
   @UserIdConverter()
   Uuid get userId => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  @DateTimeConverter()
   DateTime get createdAt => throw _privateConstructorUsedError;
-  @DateTimeConverterNullable()
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   bool get completed => throw _privateConstructorUsedError;
@@ -45,8 +43,8 @@ abstract class $TodoCopyWith<$Res> {
       {int id,
       @UserIdConverter() Uuid userId,
       String title,
-      @DateTimeConverter() DateTime createdAt,
-      @DateTimeConverterNullable() DateTime? updatedAt,
+      DateTime createdAt,
+      DateTime? updatedAt,
       String? description,
       bool completed});
 }
@@ -115,8 +113,8 @@ abstract class _$$_TodoCopyWith<$Res> implements $TodoCopyWith<$Res> {
       {int id,
       @UserIdConverter() Uuid userId,
       String title,
-      @DateTimeConverter() DateTime createdAt,
-      @DateTimeConverterNullable() DateTime? updatedAt,
+      DateTime createdAt,
+      DateTime? updatedAt,
       String? description,
       bool completed});
 }
@@ -178,8 +176,8 @@ class _$_Todo implements _Todo {
       {required this.id,
       @UserIdConverter() required this.userId,
       required this.title,
-      @DateTimeConverter() required this.createdAt,
-      @DateTimeConverterNullable() this.updatedAt,
+      required this.createdAt,
+      this.updatedAt,
       this.description,
       this.completed = false});
 
@@ -193,10 +191,8 @@ class _$_Todo implements _Todo {
   @override
   final String title;
   @override
-  @DateTimeConverter()
   final DateTime createdAt;
   @override
-  @DateTimeConverterNullable()
   final DateTime? updatedAt;
   @override
   final String? description;
@@ -246,8 +242,8 @@ abstract class _Todo implements Todo {
       {required final int id,
       @UserIdConverter() required final Uuid userId,
       required final String title,
-      @DateTimeConverter() required final DateTime createdAt,
-      @DateTimeConverterNullable() final DateTime? updatedAt,
+      required final DateTime createdAt,
+      final DateTime? updatedAt,
       final String? description,
       final bool completed}) = _$_Todo;
 
@@ -261,10 +257,8 @@ abstract class _Todo implements Todo {
   @override
   String get title;
   @override
-  @DateTimeConverter()
   DateTime get createdAt;
   @override
-  @DateTimeConverterNullable()
   DateTime? get updatedAt;
   @override
   String? get description;

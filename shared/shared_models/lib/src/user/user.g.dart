@@ -10,7 +10,7 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       id: const UserIdConverter().fromJson(json['id']),
       email: json['email'] as String,
       name: json['name'] as String,
-      createdAt: const DateTimeConverter().fromJson(json['created_at']),
+      createdAt: DateTime.parse(json['created_at'] as String),
       password: json['password'] as String? ?? '',
     );
 
@@ -26,7 +26,6 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) {
   writeNotNull('id', const UserIdConverter().toJson(instance.id));
   val['email'] = instance.email;
   val['name'] = instance.name;
-  writeNotNull(
-      'created_at', const DateTimeConverter().toJson(instance.createdAt));
+  val['created_at'] = instance.createdAt.toIso8601String();
   return val;
 }

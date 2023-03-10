@@ -16,8 +16,8 @@ class Todo with _$Todo {
     required TodoId id,
     @UserIdConverter() required UserId userId,
     required String title,
-    @DateTimeConverter() required DateTime createdAt,
-    @DateTimeConverterNullable() DateTime? updatedAt,
+    required DateTime createdAt,
+    DateTime? updatedAt,
     String? description,
     @Default(false) bool completed,
   }) = _Todo;
