@@ -76,7 +76,7 @@ class _$_NetworkFailure implements _NetworkFailure {
   }
 }
 
-abstract class _NetworkFailure implements NetworkFailure, Failure {
+abstract class _NetworkFailure implements NetworkFailure {
   const factory _NetworkFailure(
       {required final String message,
       @JsonKey(ignore: true) required final int statusCode,
@@ -147,7 +147,7 @@ class _$_RequestFailure implements _RequestFailure {
   }
 }
 
-abstract class _RequestFailure implements RequestFailure, Failure {
+abstract class _RequestFailure implements RequestFailure {
   const factory _RequestFailure(
       {required final String message,
       @JsonKey(ignore: true) final int statusCode,
@@ -372,6 +372,78 @@ abstract class _NotAllowedFailure implements NotAllowedFailure {
       {final String message,
       @JsonKey(ignore: true) final int statusCode,
       final dynamic errors}) = _$_NotAllowedFailure;
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  int get statusCode;
+  @override
+  dynamic get errors;
+}
+
+/// @nodoc
+mixin _$AuthFailure {
+  String get message => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  int get statusCode => throw _privateConstructorUsedError;
+  dynamic get errors => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createFactory: false)
+class _$_AuthFailure implements _AuthFailure {
+  const _$_AuthFailure(
+      {this.message = 'Unauthorized',
+      @JsonKey(ignore: true) this.statusCode = HttpStatus.unauthorized,
+      this.errors = null});
+
+  @override
+  @JsonKey()
+  final String message;
+  @override
+  @JsonKey(ignore: true)
+  final int statusCode;
+  @override
+  @JsonKey()
+  final dynamic errors;
+
+  @override
+  String toString() {
+    return 'AuthFailure(message: $message, statusCode: $statusCode, errors: $errors)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AuthFailure &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.statusCode, statusCode) ||
+                other.statusCode == statusCode) &&
+            const DeepCollectionEquality().equals(other.errors, errors));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, message, statusCode,
+      const DeepCollectionEquality().hash(errors));
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_AuthFailureToJson(
+      this,
+    );
+  }
+}
+
+abstract class _AuthFailure implements AuthFailure {
+  const factory _AuthFailure(
+      {final String message,
+      @JsonKey(ignore: true) final int statusCode,
+      final dynamic errors}) = _$_AuthFailure;
 
   @override
   String get message;

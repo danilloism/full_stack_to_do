@@ -64,3 +64,18 @@ Map<String, dynamic> _$$_NotAllowedFailureToJson(
   writeNotNull('errors', instance.errors);
   return val;
 }
+
+Map<String, dynamic> _$$_AuthFailureToJson(_$_AuthFailure instance) {
+  final val = <String, dynamic>{
+    'message': instance.message,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('errors', instance.errors);
+  return val;
+}

@@ -27,7 +27,6 @@ class NetworkFailure with _$NetworkFailure implements Failure {
 
 @freezed
 class RequestFailure with _$RequestFailure implements Failure {
-  @Implements<Failure>()
   const factory RequestFailure({
     required String message,
     @JsonKey(ignore: true) @Default(HttpStatus.badRequest) int statusCode,
@@ -62,4 +61,13 @@ class NotAllowedFailure with _$NotAllowedFailure implements Failure {
     @JsonKey(ignore: true) @Default(HttpStatus.methodNotAllowed) int statusCode,
     @Default(null) dynamic errors,
   }) = _NotAllowedFailure;
+}
+
+@freezed
+class AuthFailure with _$AuthFailure implements Failure {
+  const factory AuthFailure({
+    @Default('Unauthorized') String message,
+    @JsonKey(ignore: true) @Default(HttpStatus.unauthorized) int statusCode,
+    @Default(null) dynamic errors,
+  }) = _AuthFailure;
 }

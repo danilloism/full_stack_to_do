@@ -1,5 +1,6 @@
 import 'package:dart_frog/dart_frog.dart';
 
-Handler middleware(Handler handler) {
-  return handler.use(requestLogger());
-}
+import 'package:server/middlewares/parse_authentication_middleware.dart';
+
+Handler middleware(Handler handler) =>
+    handler.use(parseAuthentication()).use(requestLogger());
