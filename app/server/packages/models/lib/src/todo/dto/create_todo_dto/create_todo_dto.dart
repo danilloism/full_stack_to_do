@@ -20,9 +20,17 @@ class CreateTodoDto with _$CreateTodoDto {
   static Either<ValidationFailure, CreateTodoDto> validated(
     Map<String, dynamic> json,
   ) {
-    final validator = MapValidator(json)
-      ..addRequiredStringValidation('title')
-      ..addNullableAndNotEmptyValidation('description');
+    final validator = JsonBodyValidator(json)
+      ..addStringValidation(
+        'title',
+        nullable: false,
+        notEmpty: true,
+      )
+      ..addStringValidation(
+        'description',
+        nullable: true,
+        notEmpty: true,
+      );
 
     try {
       const failureMessage = 'Validation failed';

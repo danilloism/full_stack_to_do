@@ -22,13 +22,22 @@ class UpdateTodoDto with _$UpdateTodoDto {
   static Either<ValidationFailure, UpdateTodoDto> validated(
     Map<String, dynamic> json,
   ) {
-    final validator = MapValidator(json)
+    final validator = JsonBodyValidator(json)
       ..addMinNumberOfFieldsRequiredValidaton(
-        fields: {'title', 'description', 'completed'},
+        keys: {'title', 'description', 'completed'},
         min: 1,
       )
-      ..addNullableAndNotEmptyValidation('title')
-      ..addNullableAndNotEmptyValidation('description');
+      ..addStringValidation(
+        'title',
+        nullable: true,
+        notEmpty: true,
+      )
+      ..addStringValidation(
+        'description',
+        nullable: true,
+        notEmpty: true,
+      )
+      ..addTypeValidation<bool>('completed');
 
     try {
       const failureMessage = 'Validation failed';

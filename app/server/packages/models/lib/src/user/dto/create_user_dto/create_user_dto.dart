@@ -20,8 +20,12 @@ class CreateUserDto with _$CreateUserDto {
   static Either<ValidationFailure, CreateUserDto> validated(
     Map<String, dynamic> json,
   ) {
-    final validator = MapValidator(json)
-      ..addNameValidation()
+    final validator = JsonBodyValidator(json)
+      ..addStringValidation(
+        'name',
+        nullable: false,
+        notEmpty: true,
+      )
       ..addEmailValidation()
       ..addPasswordValidation();
 

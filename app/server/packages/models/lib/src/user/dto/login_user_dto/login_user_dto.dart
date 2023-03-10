@@ -19,7 +19,7 @@ class LoginUserDto with _$LoginUserDto {
   static Either<ValidationFailure, LoginUserDto> validated(
     Map<String, dynamic> json,
   ) {
-    final validator = MapValidator(json)
+    final validator = JsonBodyValidator(json)
       ..addEmailValidation()
       ..addPasswordValidation();
 

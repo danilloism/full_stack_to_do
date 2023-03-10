@@ -5,6 +5,10 @@ import 'package:typedefs/src/id.dart';
 
 typedef ValidationErrors = Map<String, List<String>>;
 
+typedef Validator<ValueType extends Object?> = String? Function(
+  ValueType? value,
+);
+
 Either<Failure, TodoId> mapTodoId(String id) {
   try {
     final todoId = int.tryParse(id);
