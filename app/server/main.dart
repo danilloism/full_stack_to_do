@@ -24,10 +24,10 @@ Future<HttpServer> run(Handler handler, InternetAddress ip, int port) {
     handler
         .use(provider<Environment>((_) => _env))
         .use(provider<PgConnection>((_) => _db))
-        .use(provider<JwtService>((context) => _jwt))
+        .use(provider<JwtService>((context) => JwtService(_env)))
         .use(
           provider<UserRepository>(
-            (_) => _userRepo(
+            (_) => UserRepositoryImpl(
               UserDataSourceImpl(_db),
               const PasswordHasherService(),
             ),
@@ -37,11 +37,3 @@ Future<HttpServer> run(Handler handler, InternetAddress ip, int port) {
     port,
   );
 }
-
-JwtService get _jwt => JwtService(_env);
-
-UserRepository _userRepo(
-  UserDataSource dataSrc,
-  PasswordHasherService psswrdHasher,
-) =>
-    UserRepositoryImpl(dataSrc, psswrdHasher);
